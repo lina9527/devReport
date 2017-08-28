@@ -1,2 +1,7 @@
-/.idea/
+/.idea
+
+/app
+
+/__pycache__
+
 *.pyc
