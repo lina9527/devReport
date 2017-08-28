@@ -16,32 +16,32 @@
 <div class='wrapper'>
   <div class='pad1'>
     <h1>
-      <a href="../../../index.html">All files</a> / <a href="index.html">javascripts/dashboard/components</a> SliceCell.jsx
+      <a href="../../../index.html">all files</a> / <a href="index.html">javascripts/dashboard/components/</a> SliceCell.jsx
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">0% </span>
+        <span class="strong">90.91% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>0/8</span>
+        <span class='fraction'>10/11</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">0% </span>
+        <span class="strong">66.67% </span>
         <span class="quiet">Branches</span>
-        <span class='fraction'>0/6</span>
+        <span class='fraction'>4/6</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">0% </span>
+        <span class="strong">50% </span>
         <span class="quiet">Functions</span>
-        <span class='fraction'>0/3</span>
+        <span class='fraction'>1/2</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">0% </span>
+        <span class="strong">100% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>0/7</span>
+        <span class='fraction'>9/9</span>
       </div>
     </div>
   </div>
-  <div class='status-line low'></div>
+  <div class='status-line high'></div>
 <pre><table class="coverage">
 <tr><td class="line-count quiet">1
 2
@@ -131,20 +131,26 @@
 86
 87
 88
-89</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+89
+90
+91
+92
+93
+94</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -183,11 +189,11 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -216,21 +222,27 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">/* eslint-disable react/no-danger */
-<span class="cstat-no" title="statement not covered" >import React from 'react';</span>
-<span class="cstat-no" title="statement not covered" >import PropTypes from 'prop-types';</span>
+import React from 'react';
+import PropTypes from 'prop-types';
 &nbsp;
-c</span>onst propTypes = <span class="cstat-no" title="statement not covered" >{
+import { getExploreUrl } from '../../explore/exploreUtils';
+&nbsp;
+const propTypes = {
   slice: PropTypes.object.isRequired,
   removeSlice: PropTypes.func.isRequired,
   expandedSlices: PropTypes.object,
 };
 &nbsp;
-f</span>unction <span class="fstat-no" title="function not covered" >SliceCell({ expandedSlices, removeSlice, slice }) <span class="cstat-no" title="statement not covered" ></span>{
-<span class="cstat-no" title="statement not covered" >  return (</span>
+function SliceCell({ expandedSlices, removeSlice, slice }) {
+  return (
     &lt;div className="slice-cell" id={`${slice.slice_id}-cell`}&gt;
       &lt;div className="chart-header"&gt;
         &lt;div className="row"&gt;
@@ -246,7 +258,7 @@ f</span>unction <span class="fstat-no" title="function not covered" >SliceCell({
                 &lt;i className="fa fa-repeat" /&gt;
               &lt;/a&gt;
               {slice.description &amp;&amp;
-                &lt;a title="Toggle chart description"&gt;
+<span class="branch-1 cbranch-no" title="branch not covered" >                &lt;a title="Toggle chart description"&gt;</span>
                   &lt;i
                     className="fa fa-info-circle slice_info"
                     title={slice.description}
@@ -261,7 +273,10 @@ f</span>unction <span class="fstat-no" title="function not covered" >SliceCell({
               &gt;
                 &lt;i className="fa fa-pencil" /&gt;
               &lt;/a&gt;
-              &lt;a href={slice.slice_url} title="Explore chart" data-toggle="tooltip"&gt;
+              &lt;a href={getExploreUrl(slice.form_data, 'csv')} title="Export CSV" data-toggle="tooltip"&gt;
+                &lt;i className="fa fa-table" /&gt;
+              &lt;/a&gt;
+              &lt;a href={getExploreUrl(slice.form_data)} title="Explore chart" data-toggle="tooltip"&gt;
                 &lt;i className="fa fa-share" /&gt;
               &lt;/a&gt;
               &lt;a
@@ -271,7 +286,7 @@ f</span>unction <span class="fstat-no" title="function not covered" >SliceCell({
               &gt;
                 &lt;i
                   className="fa fa-close"
-<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >                  onClick={<span class="fstat-no" title="function not covered" >() =&gt; </span>{ <span class="cstat-no" title="statement not covered" >removeSlice(slice.slice_id); }}</span></span></span>
+                  onClick={() =&gt; <span class="fstat-no" title="function not covered" >{</span> removeSlice(<span class="cstat-no" title="statement not covered" >slice.slice_id); }}</span>
                 /&gt;
               &lt;/a&gt;
             &lt;/div&gt;
@@ -282,7 +297,7 @@ f</span>unction <span class="fstat-no" title="function not covered" >SliceCell({
         className="slice_description bs-callout bs-callout-default"
         style={
           expandedSlices &amp;&amp;
-          expandedSlices[String(slice.slice_id)] ? {} : { display: 'none' }
+          expandedSlices[String(slice.slice_id)] ? <span class="branch-0 cbranch-no" title="branch not covered" >{} : { display: 'none' }</span>
         }
         dangerouslySetInnerHTML={{ __html: slice.description_markeddown }}
       /&gt;
@@ -304,7 +319,7 @@ f</span>unction <span class="fstat-no" title="function not covered" >SliceCell({
   );
 }
 &nbsp;
-<span class="cstat-no" title="statement not covered" >SliceCell.propTypes = propTypes;</span>
+SliceCell.propTypes = propTypes;
 &nbsp;
 export default SliceCell;
 &nbsp;</pre></td></tr>
@@ -313,7 +328,7 @@ export default SliceCell;
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Fri May 19 2017 23:41:00 GMT-0700 (PDT)
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Fri Aug 25 2017 16:16:59 GMT-0700 (PDT)
 </div>
 </div>
 <script src="../../../prettify.js"></script>
