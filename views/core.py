@@ -7,6 +7,8 @@ from collections import defaultdict
 from datetime import datetime, timedelta
 import json
 import logging
+
+import os
 import pandas as pd
 import pickle
 import re
@@ -14,6 +16,7 @@ import time
 import traceback
 
 import sqlalchemy as sqla
+import xlrd
 
 from flask import (
     g, request, redirect, flash, Response, render_template, Markup,
@@ -40,6 +43,8 @@ from superset.connectors.connector_registry import ConnectorRegistry
 import superset.models.core as models
 from superset.models.sql_lab import Query
 from superset.sql_parse import SupersetQuery
+from werkzeug.utils import secure_filename
+from xlrd import open_workbook
 
 from .base import (
     api, SupersetModelView, BaseSupersetView, DeleteMixin,
@@ -204,28 +209,25 @@ class DatabaseView(SupersetModelView, DeleteMixin):  # noqa
     base_order = ('changed_on', 'desc')
     description_columns = {
         'sqlalchemy_uri': utils.markdown(
-            "Refer to the "
+            "参照 "
             "[SqlAlchemy docs]"
             "(http://docs.sqlalchemy.org/en/rel_1_0/core/engines.html#"
             "database-urls) "
-            "for more information on how to structure your URI.", True),
-        'expose_in_sqllab': _("Expose this DB in SQL Lab"),
+            "中如何构造你的URI的更多信息.", True),
+        'expose_in_sqllab': _("在SQL实验室中公开此数据库"),
         'allow_run_sync': _(
-            "Allow users to run synchronous queries, this is the default "
-            "and should work well for queries that can be executed "
-            "within a web request scope (<~1 minute)"),
+            "允许用户运行同步查询，这是默认的，应该能在Web请求范围内执行查询（< 1分钟）"),
         'allow_run_async': _(
             "Allow users to run queries, against an async backend. "
             "This assumes that you have a Celery worker setup as well "
             "as a results backend."),
-        'allow_ctas': _("Allow CREATE TABLE AS option in SQL Lab"),
+        'allow_ctas': _("允许在数据建模中创建表作为选项"),
         'allow_dml': _(
-            "Allow users to run non-SELECT statements "
+            "允许用户运行非SELECT语句 "
             "(UPDATE, DELETE, CREATE, ...) "
-            "in SQL Lab"),
+            "在数据建模"),
         'force_ctas_schema': _(
-            "When allowing CREATE TABLE AS option in SQL Lab, "
-            "this option forces the table to be created in this schema"),
+            "在SQL实验室中允许创建表作为选项时，此选项强制在该模式中创建表。"),
         'extra': utils.markdown(
             "JSON string containing extra configuration elements. "
             "The ``engine_params`` object gets unpacked into the "
@@ -272,6 +274,7 @@ appbuilder.add_link(
     category='Manage',
     category_label=__("Manage"),
     category_icon='fa-wrench',)
+
 
 
 appbuilder.add_view(
@@ -344,12 +347,11 @@ class SliceModelView(SupersetModelView, DeleteMixin):  # noqa
         'slice_link', 'viz_type', 'datasource_link', 'creator', 'modified']
     edit_columns = [
         'slice_name', 'description', 'viz_type', 'owners', 'dashboards',
-        'params', 'cache_timeout']
+'params', 'cache_timeout']
     base_order = ('changed_on', 'desc')
     description_columns = {
         'description': Markup(
-            "The content here can be displayed as widget headers in the "
-            "dashboard view. Supports "
+            "这里的内容可以在仪表板视图中显示为小部件标题，支持"
             "<a href='https://daringfireball.net/projects/markdown/'>"
             "markdown</a>"),
         'params': _(
@@ -536,7 +538,8 @@ class DashboardModelViewAsync(DashboardModelView):  # noqa
     label_columns = {
         'dashboard_link': _('Dashboard'),
         'dashboard_title': _('Title'),
-        'creator': _('Creator'),
+        'creator': _(''
+                     ''),
         'modified': _('Modified'),
     }
 
@@ -637,6 +640,25 @@ class R(BaseSupersetView):
 
 appbuilder.add_view_no_menu(R)
 
+
+def importInfo(filepath,colnameindex=0,by_index=0):
+    print(filepath)
+    data = xlrd.open_workbook(filepath)
+    table = data.sheets()[by_index]
+    # 行数
+    nrows = table.nrows
+    # 列数 ncols = table.ncols
+    colnames = table.row_values(colnameindex)
+    list = []
+    for rownum in range(1,nrows):
+        row = table.row_values(rownum)
+        if row:
+            app = {}
+            for i in range(len(colnames)):
+                app[colnames[i]] = row[i]
+            list.append(app)
+    print(list)
+    return list
 
 class Superset(BaseSupersetView):
     """The base views for Superset!"""
@@ -2293,8 +2315,9 @@ class Superset(BaseSupersetView):
             entry='sqllab',
             bootstrap_data=json.dumps(d, default=utils.json_iso_dttm_ser)
         )
-appbuilder.add_view_no_menu(Superset)
 
+
+appbuilder.add_view_no_menu(Superset)
 
 class CssTemplateModelView(SupersetModelView, DeleteMixin):
     datamodel = SQLAInterface(models.CssTemplate)
@@ -2339,7 +2362,6 @@ appbuilder.add_link(
     category='SQL Lab',
     category_label=__("SQL Lab"),
 )
-
 
 @app.after_request
 def apply_caching(response):

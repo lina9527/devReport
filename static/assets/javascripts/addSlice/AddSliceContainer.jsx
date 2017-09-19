@@ -50,12 +50,12 @@ export default class AddSliceContainer extends React.PureComponent {
   render() {
     return (
       <div className="container">
-        <Panel header={<h3>Create a new slice</h3>}>
+        <Panel header={<h3>创建一个新图表</h3>}>
           <Grid>
             <Row>
               <Col xs={12} sm={6}>
                 <div>
-                  <p>Choose a datasource</p>
+                  <p>选择数据源</p>
                   <Select
                     clearable={false}
                     name="select-datasource"
@@ -67,7 +67,7 @@ export default class AddSliceContainer extends React.PureComponent {
                 </div>
                 <br />
                 <div>
-                  <p>Choose a visualization type</p>
+                  <p>选择可视化类型</p>
                   <Select
                     clearable={false}
                     name="select-vis-type"
@@ -83,7 +83,7 @@ export default class AddSliceContainer extends React.PureComponent {
                   disabled={this.isBtnDisabled()}
                   onClick={this.gotoSlice.bind(this)}
                 >
-                  Create new slice
+                  创建图表
                 </Button>
                 <br /><br />
               </Col>

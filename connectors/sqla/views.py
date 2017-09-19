@@ -51,31 +51,23 @@ class TableColumnInlineView(CompactCRUDMixin, SupersetModelView):  # noqa
             "Whether this column is exposed in the `Filters` section "
             "of the explore view."),
         'type': _(
-            "The data type that was inferred by the database. "
-            "It may be necessary to input a type manually for "
-            "expression-defined columns in some cases. In most case "
-            "users should not need to alter this."),
+            "由数据库推断的数据类型。在某些情况下，可能需要手动输入表达式定义列的类型。在大多数情况下，用户不需要更改此。"),
         'expression': utils.markdown(
-            "a valid SQL expression as supported by the underlying backend. "
-            "Example: `substr(name, 1, 1)`", True),
+            "一个有效的SQL表达式作为底层的后端支持. "
+            "列如: `substr(name, 1, 1)`", True),
         'python_date_format': utils.markdown(Markup(
-            "The pattern of timestamp format, use "
+            "时间戳格式的模式, 使用 "
             "<a href='https://docs.python.org/2/library/"
             "datetime.html#strftime-strptime-behavior'>"
-            "python datetime string pattern</a> "
-            "expression. If time is stored in epoch "
-            "format, put `epoch_s` or `epoch_ms`. Leave `Database Expression` "
-            "below empty if timestamp is stored in "
-            "String or Integer(epoch) type"), True),
+            "Python的日期字符串模式</a> "
+            "如果时间以纪元格式存储, 把 `epoch_s` 或 `epoch_ms`. 移除 `Database Expression` "
+            "如果时间戳存储在字符串或整数（纪元）类型中，则为空。"), True),
         'database_expression': utils.markdown(
-            "The database expression to cast internal datetime "
-            "constants to database date/timestamp type according to the DBAPI. "
-            "The expression should follow the pattern of "
-            "%Y-%m-%d %H:%M:%S, based on different DBAPI. "
-            "The string should be a python string formatter \n"
-            "`Ex: TO_DATE('{}', 'YYYY-MM-DD HH24:MI:SS')` for Oracle"
-            "Superset uses default expression based on DB URI if this "
-            "field is blank.", True),
+            "数据库表达式需要datetime内部常量数据库日期/时间戳类型根据DBAPI."
+            "表达应遵循的模式 %Y-%m-%d %H:%M:%S, 基于不同DBAPI. "
+            "字符串应该是一个Python字符串格式化 \n"
+            "`Oracle中示例: TO_DATE('{}', 'YYYY-MM-DD HH24:MI:SS')`. "
+            "SuperSet采用基于DB URI的默认表达式.", True),
     }
     label_columns = {
         'column_name': _("Column"),
@@ -111,18 +103,13 @@ class SqlMetricInlineView(CompactCRUDMixin, SupersetModelView):  # noqa
         'expression', 'table', 'd3format', 'is_restricted']
     description_columns = {
         'expression': utils.markdown(
-            "a valid SQL expression as supported by the underlying backend. "
-            "Example: `count(DISTINCT userid)`", True),
-        'is_restricted': _("Whether the access to this metric is restricted "
-                           "to certain roles. Only roles with the permission "
-                           "'metric access on XXX (the name of this metric)' "
-                           "are allowed to access this metric"),
+            "一个有效的SQL表达式作为底层的后端支持. "
+            "列如: `count(DISTINCT userid)`", True),
+        'is_restricted': _("访问此度量是否受限于某些角色。只有具有权限的角色XXX的度量访问（这个度量的名称）才允许访问此度量"),
         'd3format': utils.markdown(
-            "d3 formatting string as defined [here]"
+            "D3格式字符串定义 [here]"
             "(https://github.com/d3/d3-format/blob/master/README.md#format). "
-            "For instance, this default formatting applies in the Table "
-            "visualization and allow for different metric to use different "
-            "formats", True
+            "例如，默认的格式应用于表可视化并允许不同的度量使用不同的格式", True
         ),
     }
     add_columns = edit_columns

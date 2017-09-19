@@ -869,7 +869,7 @@ msgstr ""
 
 #: superset/connectors/sqla/views.py:291 superset/views/core.py:258
 msgid "Tables"
-msgstr "数据表"
+msgstr "数据集"
 
 #: superset/templates/appbuilder/navbar_right.html:41
 msgid "Profile"
@@ -1101,24 +1101,7 @@ msgstr "管理"
 msgid "Databases"
 msgstr "数据库"
 
-#: superset/views/core.py:321
-msgid "List Datasource Access Request"
-msgstr "数据源访问请求列表"
-
-#: superset/views/core.py:322
-msgid "Add Datasource Access Request"
-msgstr "添加数据源访问请求"
-
-#: superset/views/core.py:323
-msgid "Edit Datasource Access Request"
-msgstr "编辑数据源访问请求"
-
-#: superset/views/core.py:324
-msgid "Show Datasource Access Request"
-msgstr "查看数据源访问请求"
-
 #: superset/views/core.py:332 superset/views/core.py:593
-#: superset/views/sql_lab.py:23 superset/views/sql_lab.py:79
 msgid "User"
 msgstr "用户"
 
@@ -1332,11 +1315,11 @@ msgid "Date"
 msgstr "日期"
 
 #: superset/views/core.py:598
-msgid "Dashboard ID"
+msgid "Dashboard Id"
 msgstr "仪表盘ID"
 
 #: superset/views/core.py:599
-msgid "Slice ID"
+msgid "Slice Id"
 msgstr "图表ID"
 
 #: superset/views/core.py:600
@@ -1431,15 +1414,15 @@ msgstr "CSS模板"
 
 #: superset/views/core.py:2385
 msgid "SQL Editor"
-msgstr "SQL编辑器"
+msgstr "数据建模"
 
 #: superset/views/core.py:2390 superset/views/core.py:2399
 msgid "SQL Lab"
-msgstr "SQL工具箱"
+msgstr "数据模型"
 
 #: superset/views/core.py:2394
 msgid "Query Search"
-msgstr "查询搜索"
+msgstr "搜索记录"
 
 #: superset/views/sql_lab.py:16
 msgid "Query List"
@@ -1583,7 +1566,7 @@ msgstr "更新时间"
 
 #: superset/views/sql_lab.py:106
 msgid "Saved Queries"
-msgstr "已保存查询"
+msgstr "数据模型"
 
 #~ msgid "Show Table Column"
 #~ msgstr "查看表字段"
@@ -1599,3 +1582,41 @@ msgstr "已保存查询"
 
 #~ msgid "Dodified"
 #~ msgstr "更新时间"
+
+
+#: superset/views/sql_lab.py:104
+msgid "It's not a good policy to remove a user, just make it inactive"
+msgstr "使当前用户不活动，但不会删除该用户"
+
+#: superset/views/sql_lab.py:108
+msgid "Login Count"
+msgstr "登录成功统计"
+
+#: superset/views/sql_lab.py:110
+msgid "Role"
+msgstr "角色"
+
+#: superset/views/core.py:321
+msgid "List Datasource Access Request"
+msgstr "数据源访问请求列表"
+
+#: superset/views/core.py:322
+msgid "Add Datasource Access Request"
+msgstr "添加数据源访问请求"
+
+#: superset/views/core.py:323
+msgid "Edit Datasource Access Request"
+msgstr "编辑数据源访问请求"
+
+#: superset/views/core.py:324
+msgid "Show Datasource Access Request"
+msgstr "查看数据源访问请求"
+
+#: superset/views/core.py:1680
+msgid "Refer to the SqlAlchemy docs for more information on how to structure your URI"
+msgstr "参照SqlAlchemy docs中如何构造你的URI的更多信息"
+
+#: superset/views/core.py:1680
+msgid "Datasource & Chart Type"
+msgstr "数据源 & 图类型"
+
