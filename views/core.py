@@ -327,6 +327,24 @@ appbuilder.add_view(
     category_label=__("Security"),
     icon='fa-table',)
 
+appbuilder.add_link(
+    'SQL Editor',
+    label=_("SQL Editor"),
+    href='/superset/sqllab',
+    category_icon="fa-flask",
+    icon="fa-flask",
+    category='SQL Lab',
+    category_label=__("SQL Lab"),
+)
+appbuilder.add_link(
+    'Query Search',
+    label=_("Query Search"),
+    href='/superset/sqllab#search',
+    icon="fa-search",
+    category_icon="fa-flask",
+    category='SQL Lab',
+    category_label=__("SQL Lab"),
+)
 
 class SliceModelView(SupersetModelView, DeleteMixin):  # noqa
     datamodel = SQLAInterface(models.Slice)
@@ -2344,24 +2362,7 @@ appbuilder.add_view(
 
 appbuilder.add_view_no_menu(CssTemplateAsyncModelView)
 
-appbuilder.add_link(
-    'SQL Editor',
-    label=_("SQL Editor"),
-    href='/superset/sqllab',
-    category_icon="fa-flask",
-    icon="fa-flask",
-    category='SQL Lab',
-    category_label=__("SQL Lab"),
-)
-appbuilder.add_link(
-    'Query Search',
-    label=_("Query Search"),
-    href='/superset/sqllab#search',
-    icon="fa-search",
-    category_icon="fa-flask",
-    category='SQL Lab',
-    category_label=__("SQL Lab"),
-)
+
 
 @app.after_request
 def apply_caching(response):
