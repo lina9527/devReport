@@ -3,16 +3,16 @@ import * as v from '../validators';
 
 export const sections = {
   druidTimeSeries: {
-    label: 'Time',
+    label: '时间',
     expanded: true,
-    description: 'Time related form attributes',
+    description: '表单时间相关属性',
     controlSetRows: [
       ['granularity', 'druid_time_origin'],
       ['since', 'until'],
     ],
   },
   datasourceAndVizType: {
-    label: 'Datasource & Chart Type',
+    label: '数据源 & 图表类型',
     expanded: true,
     controlSetRows: [
       ['datasource'],
@@ -21,14 +21,14 @@ export const sections = {
     ],
   },
   colorScheme: {
-    label: 'Color Scheme',
+    label: '色彩搭配',
     controlSetRows: [
       ['color_scheme'],
     ],
   },
   sqlaTimeSeries: {
-    label: 'Time',
-    description: 'Time related form attributes',
+    label: '时间',
+    description: '表单时间相关属性',
     expanded: true,
     controlSetRows: [
       ['granularity_sqla', 'time_grain_sqla'],
@@ -41,11 +41,11 @@ export const sections = {
       ['where'],
       ['having'],
     ],
-    description: 'This section exposes ways to include snippets of SQL in your query',
+    description: '这部分包含你需要SQL条件',
   },
   NVD3TimeSeries: [
     {
-      label: 'Query',
+      label: '查询',
       expanded: true,
       controlSetRows: [
         ['metrics'],
@@ -54,10 +54,8 @@ export const sections = {
       ],
     },
     {
-      label: 'Advanced Analytics',
-      description: 'This section contains options ' +
-      'that allow for advanced analytical post processing ' +
-      'of query results',
+      label: '高级分析',
+      description: '本节包含允许对查询结果进行高级分析处理的选项',
       controlSetRows: [
         ['rolling_type', 'rolling_periods'],
         ['time_compare'],
@@ -69,15 +67,14 @@ export const sections = {
   ],
   filters: [
     {
-      label: 'Filters',
+      label: '过滤器',
       expanded: true,
       controlSetRows: [['filters']],
     },
     {
-      label: 'Result Filters',
+      label: '过滤器结果',
       expanded: true,
-      description: 'The filters to apply after post-aggregation.' +
-      'Leave the value control empty to filter empty strings or nulls',
+      description: '在聚合后应用的筛选器,将值控制留空，以过滤空字符串或空值',
       controlSetRows: [['having_filters']],
     },
   ],
@@ -85,11 +82,11 @@ export const sections = {
 
 export const visTypes = {
   dist_bar: {
-    label: 'Distribution - Bar Chart',
+    label: '分布式 - 柱形图',
     showOnExplore: true,
     controlPanelSections: [
       {
-        label: 'Query',
+        label: '查询',
         controlSetRows: [
           ['metrics'],
           ['groupby'],
@@ -98,7 +95,7 @@ export const visTypes = {
         ],
       },
       {
-        label: 'Chart Options',
+        label: '图形选择',
         controlSetRows: [
           ['color_scheme'],
           ['show_legend', 'show_bar_value'],
@@ -112,21 +109,21 @@ export const visTypes = {
     ],
     controlOverrides: {
       groupby: {
-        label: 'Series',
+        label: '维度',
       },
       columns: {
-        label: 'Breakdowns',
-        description: 'Defines how each series is broken down',
+        label: '统计分析',
+        description: '定义每个序列是如何被分组',
       },
     },
   },
 
   pie: {
-    label: 'Pie Chart',
+    label: '标准饼图',
     showOnExplore: true,
     controlPanelSections: [
       {
-        label: 'Query',
+        label: '查询',
         expanded: true,
         controlSetRows: [
           ['metrics', 'groupby'],
@@ -134,7 +131,7 @@ export const visTypes = {
         ],
       },
       {
-        label: 'Chart Options',
+        label: '图形选择',
         controlSetRows: [
           ['pie_label_type'],
           ['donut', 'show_legend'],
@@ -146,13 +143,13 @@ export const visTypes = {
   },
 
   line: {
-    label: 'Time Series - Line Chart',
+    label: '时间序列 - 线形图',
     showOnExplore: true,
     requiresTime: true,
     controlPanelSections: [
       sections.NVD3TimeSeries[0],
       {
-        label: 'Chart Options',
+        label: '图形选择',
         controlSetRows: [
           ['color_scheme'],
           ['show_brush', 'show_legend'],
@@ -161,14 +158,14 @@ export const visTypes = {
         ],
       },
       {
-        label: 'X Axis',
+        label: 'X 轴',
         controlSetRows: [
           ['x_axis_label', 'bottom_margin'],
           ['x_axis_showminmax', 'x_axis_format'],
         ],
       },
       {
-        label: 'Y Axis',
+        label: 'Y 轴',
         controlSetRows: [
           ['y_axis_label', 'left_margin'],
           ['y_axis_showminmax', 'y_log_scale'],
@@ -186,24 +183,24 @@ export const visTypes = {
   },
 
   dual_line: {
-    label: 'Dual Axis Line Chart',
+    label: '双轴 - 线形图',
     requiresTime: true,
     controlPanelSections: [
       {
-        label: 'Chart Options',
+        label: '图形选择',
         controlSetRows: [
           ['color_scheme'],
           ['x_axis_format'],
         ],
       },
       {
-        label: 'Y Axis 1',
+        label: 'Y 轴 1',
         controlSetRows: [
           ['metric', 'y_axis_format'],
         ],
       },
       {
-        label: 'Y Axis 2',
+        label: 'Y 轴 2',
         controlSetRows: [
           ['metric_2', 'y_axis_2_format'],
         ],
@@ -211,11 +208,11 @@ export const visTypes = {
     ],
     controlOverrides: {
       metric: {
-        label: 'Left Axis Metric',
-        description: 'Choose a metric for left axis',
+        label: '左轴度量',
+        description: '选择一个度量为左轴',
       },
       y_axis_format: {
-        label: 'Left Axis Format',
+        label: '左轴形式',
       },
       x_axis_format: {
         choices: D3_TIME_FORMAT_OPTIONS,
@@ -225,13 +222,13 @@ export const visTypes = {
   },
 
   bar: {
-    label: 'Time Series - Bar Chart',
+    label: '时间序列 - 柱形图',
     showOnExplore: true,
     requiresTime: true,
     controlPanelSections: [
       sections.NVD3TimeSeries[0],
       {
-        label: 'Chart Options',
+        label: '图形选择',
         controlSetRows: [
           ['color_scheme'],
           ['show_brush', 'show_legend', 'show_bar_value'],
@@ -241,7 +238,7 @@ export const visTypes = {
         ],
       },
       {
-        label: 'Axes',
+        label: '轴',
         controlSetRows: [
           ['x_axis_format', 'y_axis_format'],
           ['x_axis_showminmax', 'reduce_x_ticks'],
@@ -260,12 +257,12 @@ export const visTypes = {
   },
 
   compare: {
-    label: 'Time Series - Percent Change',
+    label: '时间序列 - 百分比变化',
     requiresTime: true,
     controlPanelSections: [
       sections.NVD3TimeSeries[0],
       {
-        label: 'Chart Options',
+        label: '图形选择',
         controlSetRows: [
           ['color_scheme'],
           ['x_axis_format', 'y_axis_format'],
@@ -282,12 +279,12 @@ export const visTypes = {
   },
 
   area: {
-    label: 'Time Series - Stacked',
+    label: '时间序列 - 堆叠图',
     requiresTime: true,
     controlPanelSections: [
       sections.NVD3TimeSeries[0],
       {
-        label: 'Chart Options',
+        label: '图形选择',
         controlSetRows: [
           ['show_brush', 'show_legend'],
           ['line_interpolation', 'stacked_style'],
@@ -297,7 +294,7 @@ export const visTypes = {
         ],
       },
       {
-        label: 'Axes',
+        label: '轴',
         controlSetRows: [
           ['x_axis_format', 'x_axis_showminmax'],
           ['y_axis_format', 'y_axis_bounds'],
@@ -318,26 +315,26 @@ export const visTypes = {
   },
 
   table: {
-    label: 'Table View',
+    label: '表格视图',
     controlPanelSections: [
       {
-        label: 'GROUP BY',
-        description: 'Use this section if you want a query that aggregates',
+        label: '分组',
+        description: '如果你想要一个结果集，使用这个部件',
         controlSetRows: [
           ['groupby', 'metrics'],
           ['include_time'],
         ],
       },
       {
-        label: 'NOT GROUPED BY',
-        description: 'Use this section if you want to query atomic rows',
+        label: '不分组',
+        description: '如果你想要一个原子集，使用这个部件',
         controlSetRows: [
           ['all_columns'],
           ['order_by_cols'],
         ],
       },
       {
-        label: 'Options',
+        label: '选项',
         controlSetRows: [
           ['table_timestamp_format'],
           ['row_limit', 'page_length'],
@@ -356,10 +353,10 @@ export const visTypes = {
   },
 
   markup: {
-    label: 'Markup',
+    label: '标记图',
     controlPanelSections: [
       {
-        label: 'Code',
+        label: '代码',
         controlSetRows: [
           ['markup_type'],
           ['code'],
@@ -369,10 +366,10 @@ export const visTypes = {
   },
 
   pivot_table: {
-    label: 'Pivot Table',
+    label: '数据透视表',
     controlPanelSections: [
       {
-        label: 'Query',
+        label: '查询',
         expanded: true,
         controlSetRows: [
           ['groupby', 'columns'],
@@ -380,7 +377,7 @@ export const visTypes = {
         ],
       },
       {
-        label: 'Pivot Options',
+        label: '透视选项',
         controlSetRows: [
           ['pandas_aggfunc', 'pivot_margins'],
           ['number_format', 'combine_metric'],
@@ -394,10 +391,10 @@ export const visTypes = {
   },
 
   separator: {
-    label: 'Separator',
+    label: '分离器',
     controlPanelSections: [
       {
-        label: 'Code',
+        label: '代码',
         controlSetRows: [
           ['markup_type'],
           ['code'],
@@ -416,17 +413,17 @@ export const visTypes = {
   },
 
   word_cloud: {
-    label: 'Word Cloud',
+    label: '词云',
     controlPanelSections: [
       {
-        label: 'Query',
+        label: '结果',
         expanded: true,
         controlSetRows: [
           ['series', 'metric', 'limit'],
         ],
       },
       {
-        label: 'Options',
+        label: '选项',
         controlSetRows: [
           ['size_from', 'size_to'],
           ['rotation'],
@@ -437,10 +434,10 @@ export const visTypes = {
   },
 
   treemap: {
-    label: 'Treemap',
+    label: '矩阵树图',
     controlPanelSections: [
       {
-        label: 'Query',
+        label: '结果',
         expanded: true,
         controlSetRows: [
           ['metrics'],
@@ -448,7 +445,7 @@ export const visTypes = {
         ],
       },
       {
-        label: 'Chart Options',
+        label: '图形选择',
         controlSetRows: [
           ['color_scheme'],
           ['treemap_ratio'],
@@ -464,18 +461,18 @@ export const visTypes = {
   },
 
   cal_heatmap: {
-    label: 'Calendar Heatmap',
+    label: '日历热图',
     requiresTime: true,
     controlPanelSections: [
       {
-        label: 'Query',
+        label: '查询',
         expanded: true,
         controlSetRows: [
           ['metric'],
         ],
       },
       {
-        label: 'Options',
+        label: '选项',
         controlSetRows: [
           ['domain_granularity'],
           ['subdomain_granularity'],
@@ -485,10 +482,10 @@ export const visTypes = {
   },
 
   box_plot: {
-    label: 'Box Plot',
+    label: '箱线图',
     controlPanelSections: [
       {
-        label: 'Query',
+        label: '查询',
         expanded: true,
         controlSetRows: [
           ['metrics'],
@@ -496,7 +493,7 @@ export const visTypes = {
         ],
       },
       {
-        label: 'Chart Options',
+        label: '图形选择',
         controlSetRows: [
           ['color_scheme'],
           ['whisker_options'],
@@ -506,10 +503,10 @@ export const visTypes = {
   },
 
   bubble: {
-    label: 'Bubble Chart',
+    label: '气泡图',
     controlPanelSections: [
       {
-        label: 'Query',
+        label: '查询',
         expanded: true,
         controlSetRows: [
           ['series', 'entity'],
@@ -517,20 +514,20 @@ export const visTypes = {
         ],
       },
       {
-        label: 'Chart Options',
+        label: '图形选择',
         controlSetRows: [
           ['color_scheme'],
           ['show_legend', null],
         ],
       },
       {
-        label: 'Bubbles',
+        label: '气泡',
         controlSetRows: [
           ['size', 'max_bubble_size'],
         ],
       },
       {
-        label: 'X Axis',
+        label: 'X 轴',
         controlSetRows: [
           ['x_axis_label', 'left_margin'],
           ['x', 'x_axis_format'],
@@ -538,7 +535,7 @@ export const visTypes = {
         ],
       },
       {
-        label: 'Y Axis',
+        label: 'Y 轴',
         controlSetRows: [
           ['y_axis_label', 'bottom_margin'],
           ['y', 'y_axis_format'],
@@ -557,18 +554,18 @@ export const visTypes = {
   },
 
   bullet: {
-    label: 'Bullet Chart',
+    label: '公告图',
     requiresTime: false,
     controlPanelSections: [
       {
-        label: 'Query',
+        label: '查询',
         expanded: true,
         controlSetRows: [
           ['metric'],
         ],
       },
       {
-        label: 'Chart Options',
+        label: '图形选择',
         controlSetRows: [
           ['metric'],
           ['ranges', 'range_labels'],
@@ -580,17 +577,17 @@ export const visTypes = {
   },
 
   big_number: {
-    label: 'Big Number with Trendline',
+    label: '大数字和趋势线',
     controlPanelSections: [
       {
-        label: 'Query',
+        label: '查询',
         expanded: true,
         controlSetRows: [
           ['metric'],
         ],
       },
       {
-        label: 'Chart Options',
+        label: '图形选择',
         controlSetRows: [
           ['compare_lag', 'compare_suffix'],
           ['y_axis_format', null],
@@ -599,23 +596,23 @@ export const visTypes = {
     ],
     controlOverrides: {
       y_axis_format: {
-        label: 'Number format',
+        label: '数字格式',
       },
     },
   },
 
   big_number_total: {
-    label: 'Big Number',
+    label: '大数字',
     controlPanelSections: [
       {
-        label: 'Query',
+        label: '查询',
         expanded: true,
         controlSetRows: [
           ['metric'],
         ],
       },
       {
-        label: 'Chart Options',
+        label: '图形选择',
         controlSetRows: [
           ['subheader'],
           ['y_axis_format'],
@@ -624,16 +621,16 @@ export const visTypes = {
     ],
     controlOverrides: {
       y_axis_format: {
-        label: 'Number format',
+        label: '数字格式',
       },
     },
   },
 
   histogram: {
-    label: 'Histogram',
+    label: '柱状图',
     controlPanelSections: [
       {
-        label: 'Query',
+        label: '查询',
         expanded: true,
         controlSetRows: [
           ['all_columns_x'],
@@ -641,7 +638,7 @@ export const visTypes = {
         ],
       },
       {
-        label: 'Chart Options',
+        label: '图形选择',
         controlSetRows: [
           ['color_scheme'],
           ['link_length'],
@@ -650,22 +647,22 @@ export const visTypes = {
     ],
     controlOverrides: {
       all_columns_x: {
-        label: 'Numeric Column',
-        description: 'Select the numeric column to draw the histogram',
+        label: '数值纵列',
+        description: '选择要绘制柱状图的数字列',
       },
       link_length: {
-        label: 'No of Bins',
-        description: 'Select number of bins for the histogram',
+        label: '垃圾箱',
+        description: '选择柱形图的丢弃个数',
         default: 5,
       },
     },
   },
 
   sunburst: {
-    label: 'Sunburst',
+    label: '旭日图',
     controlPanelSections: [
       {
-        label: 'Query',
+        label: '查询',
         expanded: true,
         controlSetRows: [
           ['groupby'],
@@ -674,7 +671,7 @@ export const visTypes = {
         ],
       },
       {
-        label: 'Chart Options',
+        label: '图形选择',
         controlSetRows: [
           ['color_scheme'],
         ],
@@ -682,27 +679,25 @@ export const visTypes = {
     ],
     controlOverrides: {
       metric: {
-        label: 'Primary Metric',
-        description: 'The primary metric is used to define the arc segment sizes',
+        label: '主要指标',
+        description: '主要指标是用来定义弧段的大小',
       },
       secondary_metric: {
-        label: 'Secondary Metric',
-        description: 'This secondary metric is used to ' +
-        'define the color as a ratio against the primary metric. ' +
-        'If the two metrics match, color is mapped level groups',
+        label: '次要指标',
+        description: '次要度量用来定义颜色与主度量的比值。如果两个指标匹配，颜色映射水平组',
       },
       groupby: {
-        label: 'Hierarchy',
-        description: 'This defines the level of the hierarchy',
+        label: '层次级别',
+        description: '定义层次结构的级别',
       },
     },
   },
 
   sankey: {
-    label: 'Sankey',
+    label: '桑基图',
     controlPanelSections: [
       {
-        label: 'Query',
+        label: '查询',
         expanded: true,
         controlSetRows: [
           ['groupby'],
@@ -711,7 +706,7 @@ export const visTypes = {
         ],
       },
       {
-        label: 'Chart Options',
+        label: '图形选择',
         controlSetRows: [
           ['color_scheme'],
         ],
@@ -719,17 +714,17 @@ export const visTypes = {
     ],
     controlOverrides: {
       groupby: {
-        label: 'Source / Target',
-        description: 'Choose a source and a target',
+        label: '源 / 目标',
+        description: '选择一个源和一个目标',
       },
     },
   },
 
   directed_force: {
-    label: 'Directed Force Layout',
+    label: '力导向图',
     controlPanelSections: [
       {
-        label: 'Query',
+        label: '查询',
         expanded: true,
         controlSetRows: [
           ['groupby'],
@@ -738,7 +733,7 @@ export const visTypes = {
         ],
       },
       {
-        label: 'Options',
+        label: '选项',
         controlSetRows: [
           ['link_length'],
           ['charge'],
@@ -747,16 +742,16 @@ export const visTypes = {
     ],
     controlOverrides: {
       groupby: {
-        label: 'Source / Target',
-        description: 'Choose a source and a target',
+        label: '源 / 目标',
+        description: '选择一个源和一个目标',
       },
     },
   },
   chord: {
-    label: 'Chord Diagram',
+    label: '弦图',
     controlPanelSections: [
       {
-        label: 'Query',
+        label: '查询',
         expanded: true,
         controlSetRows: [
           ['groupby', 'columns'],
@@ -764,7 +759,7 @@ export const visTypes = {
         ],
       },
       {
-        label: 'Chart Options',
+        label: '图形选择',
         controlSetRows: [
           ['y_axis_format', null],
           ['color_scheme'],
@@ -773,28 +768,28 @@ export const visTypes = {
     ],
     controlOverrides: {
       y_axis_format: {
-        label: 'Number format',
-        description: 'Choose a number format',
+        label: '数字格式',
+        description: '选择数字格式',
       },
       groupby: {
-        label: 'Source',
+        label: '源',
         multi: false,
         validators: [v.nonEmpty],
-        description: 'Choose a source',
+        description: '选择源',
       },
       columns: {
-        label: 'Target',
+        label: '目标',
         multi: false,
         validators: [v.nonEmpty],
-        description: 'Choose a target',
+        description: '选择目标',
       },
     },
   },
   country_map: {
-    label: 'Country Map',
+    label: '城市地图',
     controlPanelSections: [
       {
-        label: 'Query',
+        label: '查询',
         expanded: true,
         controlSetRows: [
           ['entity'],
@@ -802,7 +797,7 @@ export const visTypes = {
         ],
       },
       {
-        label: 'Options',
+        label: '选项',
         controlSetRows: [
           ['select_country'],
           ['linear_color_scheme'],
@@ -811,12 +806,12 @@ export const visTypes = {
     ],
     controlOverrides: {
       entity: {
-        label: 'ISO 3166-1 codes of region/province/department',
+        label: 'ISO 3166-1	代码区域/省/部',
         description: "It's ISO 3166-1 of your region/province/department in your table. (see documentation for list of ISO 3166-1)",
       },
       metric: {
-        label: 'Metric',
-        description: 'Metric to display bottom title',
+        label: '度量',
+        description: '显示底部标题的度量',
       },
       linear_color_scheme: {
         renderTrigger: false,
@@ -824,10 +819,10 @@ export const visTypes = {
     },
   },
   world_map: {
-    label: 'World Map',
+    label: '世界地图',
     controlPanelSections: [
       {
-        label: 'Query',
+        label: '查询',
         expanded: true,
         controlSetRows: [
           ['entity'],
@@ -836,7 +831,7 @@ export const visTypes = {
         ],
       },
       {
-        label: 'Bubbles',
+        label: '泡影',
         controlSetRows: [
           ['show_bubbles'],
           ['secondary_metric'],
@@ -846,25 +841,25 @@ export const visTypes = {
     ],
     controlOverrides: {
       entity: {
-        label: 'Country Control',
-        description: '3 letter code of the country',
+        label: '城市控制',
+        description: '3字母国家代码',
       },
       metric: {
-        label: 'Metric for color',
-        description: 'Metric that defines the color of the country',
+        label: '度量颜色',
+        description: '定义国家颜色的度量',
       },
       secondary_metric: {
-        label: 'Bubble size',
-        description: 'Metric that defines the size of the bubble',
+        label: '泡影尺寸',
+        description: '定义泡影大小的度量',
       },
     },
   },
 
   filter_box: {
-    label: 'Filter Box',
+    label: '过滤盒',
     controlPanelSections: [
       {
-        label: 'Query',
+        label: '查询',
         expanded: true,
         controlSetRows: [
           ['groupby'],
@@ -872,7 +867,7 @@ export const visTypes = {
         ],
       },
       {
-        label: 'Options',
+        label: '选项',
         controlSetRows: [
           ['date_filter', 'instant_filtering'],
         ],
@@ -880,10 +875,9 @@ export const visTypes = {
     ],
     controlOverrides: {
       groupby: {
-        label: 'Filter controls',
+        label: '过滤器控制',
         description: (
-          'The controls you want to filter on. Note that only columns ' +
-          'checked as "filterable" will show up on this list.'
+          '过滤的控件。注意，过滤检查这个列表显示'
         ),
         mapStateToProps: state => ({
           options: (state.datasource) ? state.datasource.columns.filter(c => c.filterable) : [],
@@ -905,10 +899,10 @@ export const visTypes = {
   },
 
   para: {
-    label: 'Parallel Coordinates',
+    label: '平行坐标',
     controlPanelSections: [
       {
-        label: 'Query',
+        label: '查询',
         expanded: true,
         controlSetRows: [
           ['series'],
@@ -918,7 +912,7 @@ export const visTypes = {
         ],
       },
       {
-        label: 'Options',
+        label: '选项',
         controlSetRows: [
           ['show_datatable', 'include_series'],
         ],
@@ -927,10 +921,10 @@ export const visTypes = {
   },
 
   heatmap: {
-    label: 'Heatmap',
+    label: '热点图',
     controlPanelSections: [
       {
-        label: 'Axis & Metrics',
+        label: '轴与度量',
         controlSetRows: [
           ['all_columns_x'],
           ['all_columns_y'],
@@ -938,7 +932,7 @@ export const visTypes = {
         ],
       },
       {
-        label: 'Heatmap Options',
+        label: '热图选项',
         controlSetRows: [
           ['linear_color_scheme'],
           ['xscale_interval', 'yscale_interval'],
@@ -958,11 +952,11 @@ export const visTypes = {
   },
 
   horizon: {
-    label: 'Horizon',
+    label: '地平线图',
     controlPanelSections: [
       sections.NVD3TimeSeries[0],
       {
-        label: 'Chart Options',
+        label: '图形选择',
         controlSetRows: [
           ['series_height', 'horizon_color_scale'],
         ],
@@ -971,10 +965,10 @@ export const visTypes = {
   },
 
   mapbox: {
-    label: 'Mapbox',
+    label: '地图盒',
     controlPanelSections: [
       {
-        label: 'Query',
+        label: '查询',
         expanded: true,
         controlSetRows: [
           ['all_columns_x', 'all_columns_y'],
@@ -984,21 +978,21 @@ export const visTypes = {
         ],
       },
       {
-        label: 'Points',
+        label: '点',
         controlSetRows: [
           ['point_radius'],
           ['point_radius_unit'],
         ],
       },
       {
-        label: 'Labelling',
+        label: '标签',
         controlSetRows: [
           ['mapbox_label'],
           ['pandas_aggfunc'],
         ],
       },
       {
-        label: 'Visual Tweaks',
+        label: '视觉调整',
         controlSetRows: [
           ['render_while_dragging'],
           ['mapbox_style'],
@@ -1007,7 +1001,7 @@ export const visTypes = {
         ],
       },
       {
-        label: 'Viewport',
+        label: '视窗',
         controlSetRows: [
           ['viewport_longitude'],
           ['viewport_latitude'],
@@ -1017,36 +1011,33 @@ export const visTypes = {
     ],
     controlOverrides: {
       all_columns_x: {
-        label: 'Longitude',
-        description: 'Column containing longitude data',
+        label: '经度',
+        description: '包含经度数据的列',
       },
       all_columns_y: {
-        label: 'Latitude',
-        description: 'Column containing latitude data',
+        label: '纬度',
+        description: '包含纬度数据的列',
       },
       pandas_aggfunc: {
-        label: 'Cluster label aggregator',
-        description: 'Aggregate function applied to the list of points ' +
-        'in each cluster to produce the cluster label.',
+        label: '聚合器',
+        description: '聚合函数应用于每个簇的单点产生的聚类标签.',
       },
       rich_tooltip: {
-        label: 'Tooltip',
-        description: 'Show a tooltip when hovering over points and clusters ' +
-        'describing the label',
+        label: '工具提示',
+        description: '当悬停在描述标签的点和集群时，显示工具提示.',
       },
       groupby: {
-        description: 'One or many controls to group by. If grouping, latitude ' +
-        'and longitude columns must be present.',
+        description: '一个或多个控件按组分组。如果分组，纬度和经度列必须在场.',
       },
     },
   },
 
   event_flow: {
-    label: 'Event flow',
+    label: '事件流动图',
     requiresTime: true,
     controlPanelSections: [
       {
-        label: 'Event definition',
+        label: '时间定义',
         controlSetRows: [
           ['entity'],
           ['all_columns_x'],
@@ -1056,7 +1047,7 @@ export const visTypes = {
         ],
       },
       {
-        label: 'Additional meta data',
+        label: '附加数据',
         controlSetRows: [
           ['all_columns'],
         ],
@@ -1064,11 +1055,11 @@ export const visTypes = {
     ],
     controlOverrides: {
       entity: {
-        label: 'Column containing entity ids',
-        description: 'e.g., a "user id" column',
+        label: '控制本质ID的列',
+        description: '例如，“用户id” 列',
       },
       all_columns_x: {
-        label: 'Column containing event names',
+        label: '控制事件名称的列',
         validators: [v.nonEmpty],
         default: control => (
           control.choices && control.choices.length > 0 ?
@@ -1076,12 +1067,12 @@ export const visTypes = {
         ),
       },
       row_limit: {
-        label: 'Event count limit',
-        description: 'The maximum number of events to return, equivalent to number of rows',
+        label: '时间数量限制',
+        description: '要返回的事件的最大数量，相当于行数。',
       },
       all_columns: {
-        label: 'Meta data',
-        description: 'Select any columns for meta data inspection',
+        label: '元数据',
+        description: '选择任何列的元数据检验',
       },
     },
   },
