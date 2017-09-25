@@ -109,11 +109,7 @@ export const visTypes = {
     ],
     controlOverrides: {
       groupby: {
-<<<<<<< HEAD
-        label: '维度',
-=======
         label: '序列',
->>>>>>> d2723bf5d6efc14eb88b52f26d3d6164dc8290b2
       },
       columns: {
         label: '统计分析',

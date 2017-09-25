@@ -443,7 +443,7 @@ msgstr "是否访问受限。只有有权限的用户才能访问"
 
 #: superset/connectors/druid/views.py:106 superset/connectors/sqla/views.py:135
 msgid "Metric"
-msgstr "计量指标名称"
+msgstr "度量指标名称"
 
 #: superset/connectors/druid/views.py:107
 #: superset/connectors/druid/views.py:236 superset/connectors/sqla/views.py:83
@@ -740,19 +740,19 @@ msgstr "激活"
 
 #: superset/connectors/sqla/views.py:107
 msgid "List Metrics"
-msgstr "SQL计量标准列表"
+msgstr "SQL度量标准列表"
 
 #: superset/connectors/sqla/views.py:108
 msgid "Show Metric"
-msgstr "查看SQL计量标准"
+msgstr "查看SQL度量标准"
 
 #: superset/connectors/sqla/views.py:109
 msgid "Add Metric"
-msgstr "新增SQL计量标准"
+msgstr "新增SQL度量标准"
 
 #: superset/connectors/sqla/views.py:110
 msgid "Edit Metric"
-msgstr "编辑SQL计量标准"
+msgstr "编辑SQL度量标准"
 
 #: superset/connectors/sqla/views.py:139
 msgid "SQL Expression"
