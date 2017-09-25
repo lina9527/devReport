@@ -40,7 +40,11 @@ const timeColumnOption = {
 const groupByControl = {
   type: 'SelectControl',
   multi: true,
+<<<<<<< HEAD
   label: '维度',
+=======
+  label: '分组',
+>>>>>>> d2723bf5d6efc14eb88b52f26d3d6164dc8290b2
   default: [],
   includeTime: false,
   description: '一个或多个控件按组分组',
@@ -80,7 +84,11 @@ export const controls = {
   metrics: {
     type: 'SelectControl',
     multi: true,
+<<<<<<< HEAD
     label: '度量',
+=======
+    label: '序列',
+>>>>>>> d2723bf5d6efc14eb88b52f26d3d6164dc8290b2
     validators: [v.nonEmpty],
     valueKey: 'metric_name',
     optionRenderer: m => <MetricOption metric={m} />,
@@ -654,7 +662,11 @@ export const controls = {
 
   series: {
     type: 'SelectControl',
+<<<<<<< HEAD
     label: '度量',
+=======
+    label: '系列',
+>>>>>>> d2723bf5d6efc14eb88b52f26d3d6164dc8290b2
     default: null,
     description: '定义实体的分组。'+
 			'每个系列在图表上显示为一个特定的颜色，并且有一个图例切换。',
