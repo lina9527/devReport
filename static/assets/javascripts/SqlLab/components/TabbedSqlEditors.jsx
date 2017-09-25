@@ -101,7 +101,7 @@ class TabbedSqlEditors extends React.PureComponent {
   }
   renameTab(qe) {
     /* eslint no-alert: 0 */
-    const newTitle = prompt('Enter a new title for the tab');
+    const newTitle = prompt('为选项卡输入一个新标题');
     if (newTitle) {
       this.props.actions.queryEditorSetTitle(qe, newTitle);
     }
@@ -120,7 +120,7 @@ class TabbedSqlEditors extends React.PureComponent {
     queryCount++;
     const activeQueryEditor = this.activeQueryEditor();
     const qe = {
-      title: `Untitled Query ${queryCount}`,
+      title: `命名查询 ${queryCount}`,
       dbId: (activeQueryEditor && activeQueryEditor.dbId) ?
         activeQueryEditor.dbId :
         this.props.defaultDbId,
@@ -177,7 +177,7 @@ class TabbedSqlEditors extends React.PureComponent {
             <MenuItem eventKey="4" onClick={this.toggleLeftBar.bind(this)}>
               <i className="fa fa-cogs" />
               &nbsp;
-              {this.state.hideLeftBar ? 'expand tool bar' : 'hide tool bar'}
+              {this.state.hideLeftBar ? '扩展工具条' : '隐藏工具条'}
             </MenuItem>
           </DropdownButton>
         </div>

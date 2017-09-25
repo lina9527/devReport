@@ -71,7 +71,7 @@ class TableElement extends React.PureComponent {
       let partitionClipBoard;
       if (table.partitions.partitionQuery) {
         partitionQuery = table.partitions.partitionQuery;
-        const tt = 'Copy partition query to clipboard';
+        const tt = '将分区查询复制到剪贴板';
         partitionClipBoard = (
           <CopyToClipboard
             text={partitionQuery}
@@ -115,7 +115,7 @@ class TableElement extends React.PureComponent {
           triggerNode={
             <Link
               className="fa fa-key pull-left m-l-2"
-              tooltip={`View keys & indexes (${table.indexes.length})`}
+              tooltip={`查看键和索引 (${table.indexes.length})`}
             />
           }
         />
@@ -131,8 +131,8 @@ class TableElement extends React.PureComponent {
           onClick={this.toggleSortColumns.bind(this)}
           tooltip={
             !this.state.sortColumns ?
-            'Sort columns alphabetically' :
-            'Original table column order'}
+            '按字母顺序排序的列' :
+            '原始表列顺序'}
           href="#"
         />
         {table.selectStar &&
@@ -142,13 +142,13 @@ class TableElement extends React.PureComponent {
             }
             text={table.selectStar}
             shouldShowText={false}
-            tooltipText="Copy SELECT statement to clipboard"
+            tooltipText="将SELECT语句复制到剪贴板"
           />
         }
         <Link
           className="fa fa-times table-remove pull-left m-l-2"
           onClick={this.removeTable.bind(this)}
-          tooltip="Remove table preview"
+          tooltip="删除表预览"
           href="#"
         />
       </ButtonGroup>

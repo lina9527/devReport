@@ -81,7 +81,7 @@ class SouthPane extends React.PureComponent {
 
     const dataPreviewTabs = props.dataPreviewQueries.map(query => (
       <Tab
-        title={`Preview for ${query.tableName}`}
+        title={`预览 ${query.tableName}`}
         eventKey={query.id}
         key={query.id}
       >
@@ -105,13 +105,13 @@ class SouthPane extends React.PureComponent {
           onSelect={this.switchTab.bind(this)}
         >
           <Tab
-            title="Results"
+            title="结果"
             eventKey="Results"
           >
             {results}
           </Tab>
           <Tab
-            title="Query History"
+            title="历史查询"
             eventKey="History"
           >
             <div style={{ height: `${this.state.innerTabHeight}px`, overflow: 'scroll' }}>

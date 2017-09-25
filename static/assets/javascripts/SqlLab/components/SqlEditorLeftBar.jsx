@@ -53,7 +53,7 @@ class SqlEditorLeftBar extends React.PureComponent {
       return Promise.resolve({ options: [] });
     }
     const url = `/superset/tables/${this.props.queryEditor.dbId}/` +
-                `${this.props.queryEditor.schema}/${input}`;
+                `${this.props.queryEditor.schema.replace("##","%23%23")}/${input}`;
     return $.get(url).then(data => ({ options: data.options }));
   }
   dbMutator(data) {
@@ -73,6 +73,7 @@ class SqlEditorLeftBar extends React.PureComponent {
   fetchTables(dbId, schema, substr) {
     // This can be large so it shouldn't be put in the Redux store
     if (dbId && schema) {
+      schema = schema.replace("##","%23%23");
       this.setState({ tableLoading: true, tableOptions: [] });
       const url = `/superset/tables/${dbId}/${schema}/${substr}/`;
       $.get(url).done((data) => {
@@ -86,7 +87,7 @@ class SqlEditorLeftBar extends React.PureComponent {
       })
       .fail(() => {
         this.setState({ tableLoading: false, tableOptions: [], tableLength: 0 });
-        notify.error('Error while fetching table list');
+        notify.error('获取表列表时出错');
       });
     } else {
       this.setState({ tableLoading: false, tableOptions: [], filterOptions: null });
@@ -99,11 +100,11 @@ class SqlEditorLeftBar extends React.PureComponent {
     }
     const namePieces = tableOpt.value.split('.');
     let tableName = namePieces[0];
-    let schemaName = this.props.queryEditor.schema;
+    let schemaName = this.props.queryEditor.schema.replace("##","%23%23");
     if (namePieces.length === 1) {
       this.setState({ tableName });
     } else {
-      schemaName = namePieces[0];
+      schemaName = namePieces[0].replace("##","%23%23");
       tableName = namePieces[1];
       this.setState({ tableName });
       this.props.actions.queryEditorSetSchema(this.props.queryEditor, schemaName);
@@ -127,7 +128,7 @@ class SqlEditorLeftBar extends React.PureComponent {
       })
       .fail(() => {
         this.setState({ schemaLoading: false, schemaOptions: [] });
-        notify.error('Error while fetching schema list');
+        notify.error('获用户构列表时出错');
       });
     }
   }
@@ -149,29 +150,29 @@ class SqlEditorLeftBar extends React.PureComponent {
               '_od_DatabaseAsync=asc'
             }
             onChange={this.onDatabaseChange.bind(this)}
-            onAsyncError={() => notify.error('Error while fetching database list')}
+            onAsyncError={() => notify.error('获取数据库列表时出错')}
             value={this.props.queryEditor.dbId}
             databaseId={this.props.queryEditor.dbId}
             actions={this.props.actions}
             valueRenderer={o => (
               <div>
-                <span className="text-muted">Database:</span> {o.label}
+                <span className="text-muted">数据源:</span> {o.label}
               </div>
             )}
             mutator={this.dbMutator.bind(this)}
-            placeholder="Select a database"
+            placeholder="更改数据源"
             autoSelect
           />
         </div>
         <div className="m-t-5">
           <Select
             name="select-schema"
-            placeholder={`Select a schema (${this.state.schemaOptions.length})`}
+            placeholder={`更改用户 (${this.state.schemaOptions.length})`}
             options={this.state.schemaOptions}
             value={this.props.queryEditor.schema}
             valueRenderer={o => (
               <div>
-                <span className="text-muted">Schema:</span> {o.label}
+                <span className="text-muted">用户:</span> {o.label}
               </div>
             )}
             isLoading={this.state.schemaLoading}
@@ -186,7 +187,7 @@ class SqlEditorLeftBar extends React.PureComponent {
               ref="selectTable"
               isLoading={this.state.tableLoading}
               value={this.state.tableName}
-              placeholder={`Add a table (${this.state.tableOptions.length})`}
+              placeholder={`添加表(${this.state.tableOptions.length})`}
               autosize={false}
               onChange={this.changeTable.bind(this)}
               filterOptions={this.state.filterOptions}
@@ -199,7 +200,7 @@ class SqlEditorLeftBar extends React.PureComponent {
               name="async-select-table"
               ref="selectTable"
               value={this.state.tableName}
-              placeholder={'Type to search ...'}
+              placeholder={'表搜索 ...'}
               autosize={false}
               onChange={this.changeTable.bind(this)}
               loadOptions={this.getTableNamesBySubStr.bind(this)}

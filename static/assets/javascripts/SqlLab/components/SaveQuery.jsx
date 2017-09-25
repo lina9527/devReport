@@ -62,12 +62,12 @@ class SaveQuery extends React.PureComponent {
             <Col md={12}>
               <small>
                 <label className="control-label" htmlFor="embed-height">
-                  Label
+                  标签
                 </label>
               </small>
               <FormControl
                 type="text"
-                placeholder="Label for your query"
+                placeholder="查询标签"
                 value={this.state.label}
                 onChange={this.onLabelChange}
               />
@@ -77,11 +77,11 @@ class SaveQuery extends React.PureComponent {
           <Row>
             <Col md={12}>
               <small>
-                <label className="control-label" htmlFor="embed-height">Description</label>
+                <label className="control-label" htmlFor="embed-height">描述</label>
               </small>
               <FormControl
                 componentClass="textarea"
-                placeholder="Write a description for your query"
+                placeholder="为您的查询编写描述"
                 value={this.state.description}
                 onChange={this.onDescriptionChange}
               />
@@ -95,10 +95,10 @@ class SaveQuery extends React.PureComponent {
                 onClick={this.onSave}
                 className="m-r-3"
               >
-                Save
+                保存
               </Button>
               <Button onClick={this.onCancel} className="cancelQuery">
-                Cancel
+                取消
               </Button>
             </Col>
           </Row>
@@ -119,7 +119,7 @@ class SaveQuery extends React.PureComponent {
           {this.renderPopover()}
         </Overlay>
         <Button bsSize="small" className="toggleSave" onClick={this.toggleSave}>
-          <i className="fa fa-save" /> Save Query
+          <i className="fa fa-save" /> 保存查询
         </Button>
       </span>
     );

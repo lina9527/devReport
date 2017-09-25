@@ -15,10 +15,10 @@ const defaultProps = {
 };
 
 export default function RunQueryActionButton(props) {
-  const runBtnText = props.selectedText ? 'Run Selected Query' : 'Run Query';
+  const runBtnText = props.selectedText ? '运行SELECR语句' : '运行查询';
   const btnStyle = props.selectedText ? 'warning' : 'primary';
   const shouldShowStopBtn = ['running', 'pending'].indexOf(props.queryState) > -1;
-  const tooltip = 'shortcut: [alt+enter]';
+  const tooltip = '快捷方式：[ Alt + Enter ]';
 
   const commonBtnProps = {
     bsSize: 'small',

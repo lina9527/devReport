@@ -75,7 +75,7 @@ export default class ResultSet extends React.PureComponent {
             bsSize="small"
             onClick={this.showModal.bind(this)}
           >
-            <i className="fa fa-line-chart m-l-1" /> Visualize
+            <i className="fa fa-line-chart m-l-1" /> 可视化
           </Button>
         );
       }
@@ -165,7 +165,7 @@ export default class ResultSet extends React.PureComponent {
               className="m-r-5"
               onClick={this.popSelectStar.bind(this)}
             >
-              Query in a new tab
+              在新选项卡中查询
             </Button>
           </Alert>
         </div>);
@@ -196,7 +196,7 @@ export default class ResultSet extends React.PureComponent {
           </div>
         );
       } else if (data && data.length === 0) {
-        return <Alert bsStyle="warning">The query returned no data</Alert>;
+        return <Alert bsStyle="warning">查询没有返回数据。</Alert>;
       }
     }
     if (query.cached) {
@@ -206,7 +206,7 @@ export default class ResultSet extends React.PureComponent {
           bsStyle="primary"
           onClick={this.reFetchQueryResults.bind(this, query)}
         >
-          Fetch data preview
+          获取数据预览
         </Button>
       );
     }
@@ -226,7 +226,7 @@ export default class ResultSet extends React.PureComponent {
           bsSize="small"
           onClick={() => { window.open(query.trackingUrl); }}
         >
-            Track Job
+            跟踪工作
         </Button>
       );
     }
