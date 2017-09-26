@@ -44,13 +44,13 @@ class Controls extends React.PureComponent {
   }
   render() {
     const dashboard = this.props.dashboard;
-    const emailBody = `Checkout this dashboard: ${window.location.href}`;
+    const emailBody = `检查这个指示板: ${window.location.href}`;
     const emailLink = 'mailto:?Subject=Superset%20Dashboard%20'
       + `${dashboard.dashboard_title}&Body=${emailBody}`;
     return (
       <ButtonGroup>
         <Button
-          tooltip="Force refresh the whole dashboard"
+          tooltip="强制刷新整个仪表板"
           onClick={this.refresh.bind(this)}
         >
           <i className="fa fa-refresh" />
@@ -90,7 +90,7 @@ class Controls extends React.PureComponent {
           onClick={() => {
             window.location = `/dashboardmodelview/edit/${dashboard.id}`;
           }}
-          tooltip="Edit this dashboard's properties"
+          tooltip="编辑这个指示板的属性"
         >
           <i className="fa fa-edit" />
         </Button>

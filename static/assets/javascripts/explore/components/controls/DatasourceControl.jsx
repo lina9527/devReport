@@ -66,7 +66,7 @@ export default class DatasourceControl extends React.PureComponent {
         },
         error() {
           that.setState({ loading: false });
-          notify.error('Something went wrong while fetching the datasource list');
+          notify.error('获取错误的数据源列表');
         },
       });
     }
@@ -91,7 +91,7 @@ export default class DatasourceControl extends React.PureComponent {
         <OverlayTrigger
           placement="right"
           overlay={
-            <Tooltip id={'error-tooltip'}>Click to point to another datasource</Tooltip>
+            <Tooltip id={'error-tooltip'}>点击指向另一个数据源</Tooltip>
           }
         >
           <Label onClick={this.toggleModal} style={{ cursor: 'pointer' }} className="m-r-5">
@@ -102,7 +102,7 @@ export default class DatasourceControl extends React.PureComponent {
           placement="right"
           overlay={
             <Tooltip id={'edit-datasource-tooltip'}>
-              Edit the datasource's configuration
+              编辑数据源的配置
             </Tooltip>
           }
         >
@@ -118,7 +118,7 @@ export default class DatasourceControl extends React.PureComponent {
           bsSize="lg"
         >
           <Modal.Header closeButton>
-            <Modal.Title>Select a datasource</Modal.Title>
+            <Modal.Title>选择一个数据源</Modal.Title>
           </Modal.Header>
           <Modal.Body>
             <div>

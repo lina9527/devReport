@@ -54,13 +54,13 @@ class SaveModal extends React.PureComponent {
         if (saveType === 'newDashboard') {
           window.location = '/superset/dashboard/' + resp.id + '/';
         } else {
-          notify.success('This dashboard was saved successfully.');
+          notify.success('此仪表板成功保存。');
         }
       },
       error(error) {
         saveModal.close();
         const errorMsg = getAjaxErrorMsg(error);
-        notify.error('Sorry, there was an error saving this dashboard: </ br>' + errorMsg);
+        notify.error('错误保存仪表板有: </ br>' + errorMsg);
       },
     });
   }
@@ -90,8 +90,8 @@ class SaveModal extends React.PureComponent {
       if (!newDashboardTitle) {
         this.modal.close();
         showModal({
-          title: 'Error',
-          body: 'You must pick a name for the new dashboard',
+          title: '错误',
+          body: '您必须为新的仪表板选择一个名称。',
         });
       } else {
         data.dashboard_title = newDashboardTitle;
@@ -105,7 +105,7 @@ class SaveModal extends React.PureComponent {
       <ModalTrigger
         ref={(modal) => { this.modal = modal; }}
         triggerNode={this.props.triggerNode}
-        modalTitle="Save Dashboard"
+        modalTitle="保存仪表板"
         modalBody={
           <FormGroup>
             <Radio
@@ -113,14 +113,14 @@ class SaveModal extends React.PureComponent {
               onChange={this.handleSaveTypeChange}
               checked={this.state.saveType === 'overwrite'}
             >
-              Overwrite Dashboard [{this.props.dashboard.dashboard_title}]
+              覆盖的仪表板：[{this.props.dashboard.dashboard_title}]
             </Radio>
             <Radio
               value="newDashboard"
               onChange={this.handleSaveTypeChange}
               checked={this.state.saveType === 'newDashboard'}
             >
-              Save as:
+              保存于:
             </Radio>
             <FormControl
               type="text"
@@ -136,7 +136,7 @@ class SaveModal extends React.PureComponent {
               bsStyle="primary"
               onClick={() => { this.saveDashboard(this.state.saveType, this.state.newDashName); }}
             >
-              Save
+              保存
             </Button>
           </div>
         }

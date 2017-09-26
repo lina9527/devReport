@@ -51,10 +51,10 @@ export default class BoundsControl extends React.Component {
     const mm = this.state.minMax;
     const errors = [];
     if (mm[0] && isNaN(mm[0])) {
-      errors.push('`Min` value should be numeric or empty');
+      errors.push('`Min` 值应该是数字的或空的。');
     }
     if (mm[1] && isNaN(mm[1])) {
-      errors.push('`Max` value should be numeric or empty');
+      errors.push('`Max` 值应该是数字的或空的');
     }
     if (errors.length === 0) {
       this.props.onChange([parseFloat(mm[0]), parseFloat(mm[1])], errors);

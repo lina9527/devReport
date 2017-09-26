@@ -39,7 +39,7 @@ export function getInitialState(boostrapData) {
 }
 
 function unload() {
-  const message = 'You have unsaved changes.';
+  const message = '你有未保存的更改.';
   window.event.returnValue = message; // Gecko + IE
   return message; // Gecko + Webkit, Safari, Chrome etc.
 }
@@ -56,9 +56,9 @@ function renderAlert() {
   render(
     <div className="container-fluid">
       <Alert bsStyle="warning">
-        <strong>You have unsaved changes.</strong> Click the&nbsp;
+        <strong>你有未保存的更改.</strong> 点击&nbsp;
         <i className="fa fa-save" />&nbsp;
-        button on the top right to save your changes.
+        右上角的按钮来保存您的更改.
       </Alert>
     </div>,
     document.getElementById('alert-container'),

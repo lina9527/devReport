@@ -14,7 +14,7 @@ const UserInfo = ({ user }) => (
         email={user.email}
         width="100%"
         height=""
-        alt="Profile picture provided by Gravatar"
+        alt="Gravatar提供的个人资料"
         className="img-rounded"
         style={{ borderRadius: 15 }}
       />
@@ -29,7 +29,7 @@ const UserInfo = ({ user }) => (
       </h4>
       <hr />
       <p>
-        <i className="fa fa-clock-o" /> joined {moment(user.createdOn, 'YYYYMMDD').fromNow()}
+        <i className="fa fa-clock-o" /> 加入 {moment(user.createdOn, 'YYYYMMDD').fromNow()}
       </p>
       <p className="email">
         <i className="fa fa-envelope-o" /> {user.email}

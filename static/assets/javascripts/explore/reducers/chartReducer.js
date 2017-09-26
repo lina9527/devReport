@@ -28,13 +28,13 @@ export default function chartReducer(state = {}, action) {
       return Object.assign({}, state,
         {
           chartStatus: 'stopped',
-          chartAlert: 'Updating chart was stopped',
+          chartAlert: '更新图表已停止',
         });
     },
     [actions.CHART_RENDERING_FAILED]() {
       return Object.assign({}, state, {
         chartStatus: 'failed',
-        chartAlert: 'An error occurred while rendering the visualization: ' + action.error,
+        chartAlert: '当呈现可视化时发生了一个错误: ' + action.error,
       });
     },
     [actions.CHART_UPDATE_TIMEOUT]() {

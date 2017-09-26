@@ -30,7 +30,7 @@ export default class Favorites extends React.PureComponent {
         className="table table-condensed"
         columns={['slice', 'creator', 'favorited']}
         mutator={mutator}
-        noDataText="No favorite slices yet, go click on stars!"
+        noDataText="还没有喜欢的图表, 去点击星星!"
         sortable
       />
     );
@@ -46,7 +46,7 @@ export default class Favorites extends React.PureComponent {
         className="table table-condensed"
         mutator={mutator}
         dataEndpoint={`/superset/fave_dashboards/${this.props.user.userId}/`}
-        noDataText="No favorite dashboards yet, go click on stars!"
+        noDataText="还没有喜欢的仪表盘, 去点击星星!"
         columns={['dashboard', 'creator', 'favorited']}
         sortable
       />
@@ -55,10 +55,10 @@ export default class Favorites extends React.PureComponent {
   render() {
     return (
       <div>
-        <h3>Dashboards</h3>
+        <h3>仪表盘</h3>
         {this.renderDashboardTable()}
         <hr />
-        <h3>Slices</h3>
+        <h3>图表</h3>
         {this.renderSliceTable()}
       </div>
     );

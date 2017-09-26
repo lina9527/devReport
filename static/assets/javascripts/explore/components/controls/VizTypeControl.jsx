@@ -91,7 +91,7 @@ export default class VizTypeControl extends React.PureComponent {
         <OverlayTrigger
           placement="right"
           overlay={
-            <Tooltip id={'error-tooltip'}>Click to change visualization type</Tooltip>
+            <Tooltip id={'error-tooltip'}>单击以更改可视化类型</Tooltip>
           }
         >
           <Label onClick={this.toggleModal} style={{ cursor: 'pointer' }}>
@@ -106,7 +106,7 @@ export default class VizTypeControl extends React.PureComponent {
           bsSize="lg"
         >
           <Modal.Header closeButton>
-            <Modal.Title>Select a visualization type</Modal.Title>
+            <Modal.Title>选择可视化类型</Modal.Title>
           </Modal.Header>
           <Modal.Body>
             <div>

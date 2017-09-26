@@ -34,10 +34,10 @@ class RefreshIntervalModal extends React.PureComponent {
       <ModalTrigger
         triggerNode={this.props.triggerNode}
         isButton
-        modalTitle="Refresh Interval"
+        modalTitle="刷新间隔"
         modalBody={
           <div>
-            Choose the refresh frequency for this dashboard
+            选择刷新频率为该仪表板
             <Select
               options={options}
               value={this.state.refreshFrequency}

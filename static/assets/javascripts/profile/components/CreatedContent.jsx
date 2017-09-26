@@ -29,7 +29,7 @@ class CreatedContent extends React.PureComponent {
         className="table table-condensed"
         columns={['slice', 'favorited']}
         mutator={mutator}
-        noDataText="No slices"
+        noDataText="无图表"
         sortable
       />
     );
@@ -45,7 +45,7 @@ class CreatedContent extends React.PureComponent {
         className="table table-condensed"
         mutator={mutator}
         dataEndpoint={`/superset/created_dashboards/${this.props.user.userId}/`}
-        noDataText="No dashboards"
+        noDataText="无仪表盘"
         columns={['dashboard', 'favorited']}
         sortable
       />
@@ -54,10 +54,10 @@ class CreatedContent extends React.PureComponent {
   render() {
     return (
       <div>
-        <h3>Dashboards</h3>
+        <h3>仪表板</h3>
         {this.renderDashboardTable()}
         <hr />
-        <h3>Slices</h3>
+        <h3>图表</h3>
         {this.renderSliceTable()}
       </div>
     );

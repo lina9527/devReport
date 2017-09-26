@@ -20,25 +20,25 @@ export default function App(props) {
         </Col>
         <Col md={9}>
           <Tabs id="options">
-            <Tab eventKey={1} title={<div><i className="fa fa-star" /> Favorites</div>}>
+            <Tab eventKey={1} title={<div><i className="fa fa-star" /> 收藏夹</div>}>
               <Panel><Favorites user={props.user} /></Panel>
             </Tab>
             <Tab
               eventKey={2}
               title={
-                <div><i className="fa fa-paint-brush" /> Created Content</div>
+                <div><i className="fa fa-paint-brush" /> 创建的内容</div>
               }
             >
               <Panel>
                 <CreatedContent user={props.user} />
               </Panel>
             </Tab>
-            <Tab eventKey={3} title={<div><i className="fa fa-list" /> Recent Activity</div>}>
+            <Tab eventKey={3} title={<div><i className="fa fa-list" /> 最近的活动</div>}>
               <Panel>
                 <RecentActivity user={props.user} />
               </Panel>
             </Tab>
-            <Tab eventKey={4} title={<div><i className="fa fa-lock" /> Security & Access</div>}>
+            <Tab eventKey={4} title={<div><i className="fa fa-lock" /> 安全 & 访问</div>}>
               <Panel>
                 <Security user={props.user} />
               </Panel>

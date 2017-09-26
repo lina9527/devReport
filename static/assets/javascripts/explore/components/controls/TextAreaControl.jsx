@@ -76,7 +76,7 @@ export default class TextAreaControl extends React.Component {
           modalTitle={controlHeader}
           triggerNode={
             <Button bsSize="small" className="m-t-5">
-              Edit <strong>{this.props.language}</strong> in modal
+              编辑 <strong>{this.props.language}</strong> 在模型
             </Button>
           }
           modalBody={this.renderEditor(true)}
