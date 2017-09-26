@@ -62,7 +62,7 @@ class SqlEditorLeftBar extends React.PureComponent {
     if (data.result.length === 0) {
       this.props.actions.addAlert({
         bsStyle: 'danger',
-        msg: "It seems you don't have access to any database",
+        msg: "看来您没有访问任何数据库的权限。",
       });
     }
     return options;
@@ -223,7 +223,7 @@ class SqlEditorLeftBar extends React.PureComponent {
         </div>
         {shouldShowReset &&
           <Button bsSize="small" bsStyle="danger" onClick={this.resetState.bind(this)}>
-            <i className="fa fa-bomb" /> Reset State
+            <i className="fa fa-bomb" /> 复位状态
           </Button>
         }
       </div>

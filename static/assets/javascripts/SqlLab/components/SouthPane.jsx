@@ -76,7 +76,7 @@ class SouthPane extends React.PureComponent {
         />
       );
     } else {
-      results = <Alert bsStyle="info">Run a query to display results here</Alert>;
+      results = <Alert bsStyle="info">运行一个查询来显示结果</Alert>;
     }
 
     const dataPreviewTabs = props.dataPreviewQueries.map(query => (

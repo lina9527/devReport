@@ -102,7 +102,7 @@ class QuerySearch extends React.PureComponent {
     if (data.result.length === 0) {
       this.props.actions.addAlert({
         bsStyle: 'danger',
-        msg: "It seems you don't have access to any database",
+        msg: "你无法访问任何数据库",
       });
     }
     return options;
@@ -186,7 +186,7 @@ class QuerySearch extends React.PureComponent {
             />
           </div>
           <Button bsSize="small" bsStyle="success" onClick={this.refreshQueries.bind(this)}>
-            Search
+            搜索
           </Button>
         </div>
         {this.state.queriesLoading ?

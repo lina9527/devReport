@@ -105,7 +105,7 @@ export function fetchQueryResults(query) {
         dispatch(querySuccess(query, results));
       },
       error(err) {
-        let msg = 'Failed at retrieving results from the results backend';
+        let msg = '从结果后端检索结果失败';
         if (err.responseJSON && err.responseJSON.error) {
           msg = err.responseJSON.error;
         }
@@ -151,12 +151,12 @@ export function runQuery(query) {
           }
         }
         if (textStatus === 'error' && errorThrown === '') {
-          msg = 'Could not connect to server';
+          msg = '无法连接到服务器';
         } else if (msg === null) {
           msg = `[${textStatus}] ${errorThrown}`;
         }
         if (msg.indexOf('CSRF token') > 0) {
-          msg = 'Your session timed out, please refresh your page and try again.';
+          msg = '会话超时，请刷新页面再试一次。';
         }
         dispatch(queryFailed(query, msg));
       },
@@ -175,10 +175,10 @@ export function postStopQuery(query) {
       url: stopQueryUrl,
       data: stopQueryRequestData,
       success() {
-        notify.success('Query was stopped.');
+        notify.success('查询中.');
       },
       error() {
-        notify.error('Failed at stopping query.');
+        notify.error('在停止查询失败.');
       },
     });
   };
@@ -291,7 +291,7 @@ export function addTable(query, tableName, schemaName) {
         isMetadataLoading: false,
       });
       dispatch(mergeTable(newTable));
-      notify.error('Error occurred while fetching table metadata');
+      notify.error('在获取表元数据时发生错误');
     });
 
     url = `/superset/extra_table_metadata/${query.dbId}/${tableName}/${schemaName}/`;
@@ -304,7 +304,7 @@ export function addTable(query, tableName, schemaName) {
         isExtraMetadataLoading: false,
       });
       dispatch(mergeTable(newTable));
-      notify.error('Error occurred while fetching table metadata');
+      notify.error('在获取表元数据时发生错误');
     });
   };
 }
@@ -362,7 +362,7 @@ export function popStoredQuery(urlId) {
         };
         dispatch(addQueryEditor(queryEditorProps));
       },
-      error: () => notify.error("The query couldn't be loaded"),
+      error: () => notify.error("无法加载该查询"),
     });
   };
 }
@@ -382,7 +382,7 @@ export function popSavedQuery(saveQueryId) {
         };
         dispatch(addQueryEditor(queryEditorProps));
       },
-      error: () => notify.error("The query couldn't be loaded"),
+      error: () => notify.error("无法加载该查询"),
     });
   };
 }
@@ -415,7 +415,7 @@ export function createDatasource(vizOptions, context) {
         dispatch(createDatasourceSuccess(resp));
       },
       error: () => {
-        dispatch(createDatasourceFailed('An error occurred while creating the data source'));
+        dispatch(createDatasourceFailed('在创建数据源时发生了错误'));
       },
     });
   };

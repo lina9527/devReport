@@ -7,7 +7,7 @@ import { addToObject, alterInObject, alterInArr, removeFromArr, getFromArr, addT
 export function getInitialState(defaultDbId) {
   const defaultQueryEditor = {
     id: shortid.generate(),
-    title: 'Untitled Query',
+    title: '无标题的查询',
     sql: 'SELECT *\nFROM\nWHERE',
     selectedText: null,
     latestQueryId: null,
@@ -40,7 +40,7 @@ export const sqlLabReducer = function (state, action) {
           qe.id === state.tabHistory[state.tabHistory.length - 1]);
       const qe = {
         id: shortid.generate(),
-        title: `Copy of ${progenitor.title}`,
+        title: `${progenitor.title} 的副本`,
         dbId: (action.query.dbId) ? action.query.dbId : null,
         schema: (action.query.schema) ? action.query.schema : null,
         autorun: true,

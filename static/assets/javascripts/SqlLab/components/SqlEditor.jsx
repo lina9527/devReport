@@ -115,13 +115,13 @@ class SqlEditor extends React.PureComponent {
       );
       limitWarning = (
         <OverlayTrigger placement="left" overlay={tooltip}>
-          <Label bsStyle="warning" className="m-r-5">LIMIT</Label>
+          <Label bsStyle="warning" className="m-r-5">限制</Label>
         </OverlayTrigger>
       );
     }
     let ctasControls;
     if (this.props.database && this.props.database.allow_ctas) {
-      const ctasToolTip = 'Create table as with query results';
+      const ctasToolTip = '创建表和查询结果';
       ctasControls = (
         <FormGroup>
           <InputGroup>

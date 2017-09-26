@@ -90,7 +90,7 @@ class TableElement extends React.PureComponent {
         <Well bsSize="small">
           <div>
             <small>
-              latest partition: {latest}
+              区分: {latest}
             </small> {partitionClipBoard}
           </div>
         </Well>
@@ -106,7 +106,7 @@ class TableElement extends React.PureComponent {
         <ModalTrigger
           modalTitle={
             <div>
-              Keys for table <strong>{table.name}</strong>
+              键表 <strong>{table.name}</strong>
             </div>
           }
           modalBody={table.indexes.map((ix, i) => (

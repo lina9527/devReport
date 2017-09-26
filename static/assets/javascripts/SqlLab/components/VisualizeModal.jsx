@@ -162,7 +162,7 @@ class VisualizeModal extends React.PureComponent {
         if (mainGroupBy) {
           formData.groupby = [mainGroupBy.name];
         }
-        notify.info('Creating a data source and popping a new tab');
+        notify.info('创建数据源并弹出一个新选项卡');
 
         window.open(getExploreUrl(formData));
       })
@@ -192,7 +192,7 @@ class VisualizeModal extends React.PureComponent {
         <div className="VisualizeModal">
           <Modal show={this.props.show} onHide={this.props.onHide}>
             <Modal.Body>
-              No results available for this query
+              此查询没有可用结果
             </Modal.Body>
           </Modal>
         </div>
@@ -237,14 +237,14 @@ class VisualizeModal extends React.PureComponent {
       <div className="VisualizeModal">
         <Modal show={this.props.show} onHide={this.props.onHide}>
           <Modal.Header closeButton>
-            <Modal.Title>Visualize</Modal.Title>
+            <Modal.Title>可视化</Modal.Title>
           </Modal.Header>
           <Modal.Body>
             {alerts}
             {this.buildVisualizeAdvise()}
             <div className="row">
               <Col md={6}>
-                Chart Type
+               图表类型
                 <Select
                   name="select-chart-type"
                   placeholder="[Chart Type]"
@@ -255,7 +255,7 @@ class VisualizeModal extends React.PureComponent {
                 />
               </Col>
               <Col md={6}>
-                Datasource Name
+                数据源名称
                 <input
                   type="text"
                   className="form-control input-sm"
@@ -276,7 +276,7 @@ class VisualizeModal extends React.PureComponent {
               bsStyle="primary"
               disabled={(this.state.hints.length > 0)}
             >
-              Visualize
+              可视化
             </Button>
           </Modal.Body>
         </Modal>

@@ -166,10 +166,10 @@ class TabbedSqlEditors extends React.PureComponent {
             title=""
           >
             <MenuItem eventKey="1" onClick={this.removeQueryEditor.bind(this, qe)}>
-              <i className="fa fa-close" /> close tab
+              <i className="fa fa-close" /> 关闭标签
             </MenuItem>
             <MenuItem eventKey="2" onClick={this.renameTab.bind(this, qe)}>
-              <i className="fa fa-i-cursor" /> rename tab
+              <i className="fa fa-i-cursor" /> 重命名标签
             </MenuItem>
             {qe &&
               <CopyQueryTabUrl queryEditor={qe} />

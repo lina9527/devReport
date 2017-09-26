@@ -52,7 +52,7 @@ class HighlightedSql extends React.Component {
     if (this.props.rawSql && this.props.rawSql !== this.props.sql) {
       rawSql = (
         <div>
-          <h4>Raw SQL</h4>
+          <h4>原始SQL</h4>
           <SyntaxHighlighter language="sql" style={github}>
             {this.props.rawSql}
           </SyntaxHighlighter>
@@ -62,7 +62,7 @@ class HighlightedSql extends React.Component {
     this.setState({
       modalBody: (
         <div>
-          <h4>Source SQL</h4>
+          <h4>源的SQL</h4>
           <SyntaxHighlighter language="sql" style={github}>
             {this.props.sql}
           </SyntaxHighlighter>

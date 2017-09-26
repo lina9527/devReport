@@ -24,7 +24,7 @@ const QueryHistory = (props) => {
   }
   return (
     <Alert bsStyle="info">
-      No query history yet...
+      没有查询历史...
     </Alert>
   );
 };

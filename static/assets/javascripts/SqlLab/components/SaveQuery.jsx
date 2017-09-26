@@ -12,7 +12,7 @@ const propTypes = {
   onSave: PropTypes.func,
 };
 const defaultProps = {
-  defaultLabel: 'Undefined',
+  defaultLabel: '未定义',
   animation: true,
   onSave: () => {},
 };
