@@ -651,8 +651,8 @@ export const visTypes = {
         description: '选择要绘制柱状图的数字列',
       },
       link_length: {
-        label: '垃圾箱',
-        description: '选择柱形图的丢弃个数',
+        label: '显示数',
+        description: '选择柱形图的显示个数',
         default: 5,
       },
     },
