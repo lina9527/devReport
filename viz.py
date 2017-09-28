@@ -65,7 +65,6 @@ class BaseViz(object):
         """Returns a pandas dataframe based on the query object"""
         if not query_obj:
             query_obj = self.query_obj()
-
         self.error_msg = ""
         self.results = None
 
@@ -1043,6 +1042,12 @@ class DistributionPieViz(NVD3Viz):
     is_timeseries = False
 
     def get_data(self, df):
+        groupName = df.columns[0]
+        polymerization = df.columns[1]
+        if groupName.lower() in self.groupby[0].lower():
+            self.groupby[0] = groupName
+        if polymerization.lower() in self.metrics[0].lower():
+            self.metrics[0] = polymerization
         df = df.pivot_table(
             index=self.groupby,
             values=[self.metrics[0]])
