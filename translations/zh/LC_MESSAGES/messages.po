@@ -1620,3 +1620,6 @@ msgstr "参照SqlAlchemy docs中如何构造你的URI的更多信息"
 msgid "Datasource & Chart Type"
 msgstr "数据源 & 图类型"
 
+#: superset/views/core.py:1680
+msgid "Import ExeclInfo"
+msgstr "导入Execl信息"

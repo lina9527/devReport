@@ -666,8 +666,8 @@ def importInfo(filepath,colnameindex=0,by_index=0):
             app = {}
             for i in range(len(colnames)):
                 app[colnames[i]] = row[i]
+            print(app)
             list.append(app)
-    print(list)
     return list
 
 class Superset(BaseSupersetView):
@@ -2326,6 +2326,26 @@ class Superset(BaseSupersetView):
             bootstrap_data=json.dumps(d, default=utils.json_iso_dttm_ser)
         )
 
+    @expose("/ExeclInfoAdd", methods=['GET', 'POST'])
+    @log_this
+    def ExeclInfoAdd(self):
+        if request.method == 'POST':
+            headimg = request.files['headimg']
+            filepath = os.path.join(r'D:\other', headimg.filename)
+            print('导入'+headimg.filename)
+            headimg.save(filepath)
+            excelName = headimg.filename
+            importInfo(filepath)
+        else:
+            return render_template('superset/ImportExeclInfo.html')
+
+        return self.render_template('superset/ImportExeclInfo.html')
+
+    @expose("/Import_ExeclInfo", methods=['GET', 'POST'])
+    @log_this
+    @has_access
+    def Import_ExeclInfo(self):
+        return self.render_template('superset/ImportExeclInfo.html')
 
 appbuilder.add_view_no_menu(Superset)
 
@@ -2369,6 +2389,7 @@ appbuilder.add_link(
     category='SQL Lab',
     category_label=__("SQL Lab"),
 )
+
 
 @app.after_request
 def apply_caching(response):
