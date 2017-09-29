@@ -1,0 +1,22 @@
+{% extends "superset/basic.html" %}
+
+{% block title %}{{ _("Import") }}{% endblock %}
+
+{% block body %}
+        {% include "superset/flash_wrapper.html" %}
+
+    <div class="container">
+        <title>Import the ExeclInfo.</title>
+        <h1>Import the ExeclInfo</h1>
+        <form action="/superset/ExeclInfoAdd"  method=POST enctype=multipart/form-data>
+            <input
+            type="hidden"
+            name="csrf_token"
+            id="csrf_token"
+            value="{{ csrf_token() if csrf_token else '' }}"
+          >
+            <input type="file" name="headimg">
+            <input type="submit" name="upload">
+        </form>
+    </div>
+{% endblock %}
