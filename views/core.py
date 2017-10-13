@@ -651,25 +651,6 @@ class R(BaseSupersetView):
 appbuilder.add_view_no_menu(R)
 
 
-def importInfo(filepath,colnameindex=0,by_index=0):
-    print(filepath)
-    data = xlrd.open_workbook(filepath)
-    table = data.sheets()[by_index]
-    # 行数
-    nrows = table.nrows
-    # 列数 ncols = table.ncols
-    colnames = table.row_values(colnameindex)
-    list = []
-    for rownum in range(1,nrows):
-        row = table.row_values(rownum)
-        if row:
-            app = {}
-            for i in range(len(colnames)):
-                app[colnames[i]] = row[i]
-            print(app)
-            list.append(app)
-    return list
-
 class Superset(BaseSupersetView):
     """The base views for Superset!"""
     @api

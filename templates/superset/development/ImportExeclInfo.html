@@ -1,0 +1,84 @@
+{% extends "superset/basic.html" %}
+
+{% block title %}{{ _("Import") }}{% endblock %}
+{% block head_css %}
+    <link rel="stylesheet" type="text/css" href="/static/assets/stylesheets/execl.css" />
+    <link rel="stylesheet" type="text/css" href="/static/assets/plug-ins/layui/css/layui.css" />
+    <link rel="icon" type="image/png" href="/static/assets/images/favicon.png">
+    <link rel="stylesheet" type="text/css" href="/static/appbuilder/css/flags/flags16.css" />
+    <link rel="stylesheet" type="text/css" href="{{ js_manifest('theme.css') }}" />
+    <link rel="stylesheet" type="text/css" href="/static/appbuilder/css/font-awesome.min.css">
+    {% if entry %}
+        <link rel="stylesheet" type="text/css" href="{{ js_manifest(entry + '.css') }}" />
+    {% endif %}
+    <script src="/static/assets/plug-ins/layui/layui.all.js"></script>
+    <script src="/static/assets/node_modules/jquery/dist/jquery.js"></script>
+{#    <script type=text/javascript>
+        $SCRIPT_ROOT = {{ request.script_root|tojson|safe }};
+    </script>#}
+{% endblock %}
+{% block body %}
+    {% include "superset/flash_wrapper.html" %}
+    <div class="layui-tab" lay-filter="demo" lay-allowclose="true">
+        <ul class="layui-tab-title">
+            <li class="layui-this" lay-id="11">Execl导入</li>
+        </ul>
+        <div class="layui-tab-content">
+            <div class="layui-tab-item layui-show">
+                <div class="container">
+                    <form action="/superset/ExeclInfoAdd" method="post" enctype=multipart/form-data >
+                        <table align="center">
+                            <tr>
+                                <input type="hidden" name="csrf_token" id="csrf_token" value="{{ csrf_token() if csrf_token else '' }}">
+                            </tr>
+                            <tr>
+                                <td>
+                                    <input type="file" name="headimg" class="headimg" id="headimg"
+                                          style="display: none" onchange="upfile();">
+                                    <div class="layui-upload-drag" onclick="fileUp();">
+                                        <i class="layui-icon"></i>
+                                        <p>点击上传，或将文件拖拽到此处</p>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><label class="hdtitle">文件路径：</label></td>
+                                <td><input type="text" name="filename" class="filename" id="filename" readonly></td>
+                            </tr>
+                            <tr>
+                                 <td colspan="2"><label class="hdtitle">温馨提示：请使用Chrome游览器上传文件</label></td>
+                            </tr>
+                            <tr class="foor_tr">
+                                <td class="foot_td">
+                                    <button class="layui-btn layui-btn-small layui-btn-normal" id="nextstep" >下一步</button>
+                                </td>
+                                <td class="foot_td"><input type="submit" name="upload" id="submit" style="display: none;"></td>
+                            </tr>
+                        </table>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+
+        function fileUp(){
+            $("#headimg").click();
+        }
+        function upfile() {
+            headimg = $("#headimg").val();
+            if(headimg != ''){
+                layer.alert('导入成功', {icon: 1});
+                $("#filename").val(headimg);
+            }else{
+                layer.alert('导入失败', {icon: 2});
+                $("#filename").val(headimg);
+            }
+        }
+        $("#nextstep").click(function () {
+            if($("#headimg").val() != ''){
+                $("#submit").click();
+            }
+        })
+    </script>
+{% endblock %}

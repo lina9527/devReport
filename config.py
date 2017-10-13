@@ -32,7 +32,7 @@ if not os.path.exists(DATA_DIR):
     os.makedirs(DATA_DIR)
 
 # ---------------------------------------------------------
-# Superset specific config
+# Superset 具体配置
 # ---------------------------------------------------------
 PACKAGE_DIR = os.path.join(BASE_DIR, 'static', 'assets')
 PACKAGE_FILE = os.path.join(PACKAGE_DIR, 'package.json')
@@ -52,37 +52,37 @@ CUSTOM_SECURITY_MANAGER = None
 SQLALCHEMY_TRACK_MODIFICATIONS = False
 # ---------------------------------------------------------
 
-# Your App secret key
+# 你的应用程序密钥
 SECRET_KEY = '\2\1thisismyscretkey\1\2\e\y\y\h'  # noqa
 # SQLALCHEMY_DATABASE_URI = 'oracle://c##_supdata:password@192.168.1.172:1521/orcl'
-# The SQLAlchemy connection string.
+# SQLAlchemy 连接字符串.
 SQLALCHEMY_DATABASE_URI = 'sqlite:///' + os.path.join(DATA_DIR, 'superset.db')
 # SQLALCHEMY_DATABASE_URI = 'mysql://myapp@localhost/myapp'
 # SQLALCHEMY_DATABASE_URI = 'postgresql://root:password@localhost/myapp'
 
-# The limit of queries fetched for query search
+# 查询与查询搜索限制
 QUERY_SEARCH_LIMIT = 1000
 
 # Flask-WTF flag for CSRF
 WTF_CSRF_ENABLED = True
 
-# Whether to run the web server in debug mode or not
+# 是否要运行Web服务器的调试模式
 DEBUG = False
 FLASK_USE_RELOAD = True
 
-# Whether to show the stacktrace on 500 error
+# 是否对500错误显示堆栈跟踪
 SHOW_STACKTRACE = True
 
-# Extract and use X-Forwarded-For/X-Forwarded-Proto headers?
+# 提取和使用X-Forwarded-For / x-forwarded-proto 头?
 ENABLE_PROXY_FIX = False
 
 # ------------------------------
 # GLOBALS FOR APP Builder
 # ------------------------------
-# Uncomment to setup Your App name
+# 设置您的应用程序名称
 APP_NAME = "Superset"
 
-# Uncomment to setup an App icon
+# 设置应用程序图标
 APP_ICON = "/static/assets/images/superset-logo@2x.png"
 
 # Druid query timezone
@@ -290,7 +290,7 @@ ROBOT_PERMISSION_ROLES = ['Public', 'Gamma', 'Alpha', 'Admin', 'sql_lab']
 CONFIG_PATH_ENV_VAR = 'SUPERSET_CONFIG_PATH'
 
 
-# smtp server configuration
+# SMTP服务器配置
 EMAIL_NOTIFICATIONS = False  # all the emails are sent using dryrun
 SMTP_HOST = 'localhost'
 SMTP_STARTTLS = True
