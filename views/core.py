@@ -10,6 +10,7 @@ import logging
 
 import os
 import pandas as pd
+import numpy as np
 import pickle
 import re
 import time
@@ -2306,27 +2307,48 @@ class Superset(BaseSupersetView):
             entry='sqllab',
             bootstrap_data=json.dumps(d, default=utils.json_iso_dttm_ser)
         )
+    @expose("/ColumnInfo", methods=['GET', 'POST'])
+    @log_this
+    def ColumnInfo(self):
+        if request.method == 'POST':
+            try:
+                tab_name = request.form['tab_name']
+                tab_tal = request.form['tab_tal'].split(',')
+                filename = request.form['filename']
+                filepath = os.path.join(config.get('IMG_UPLOAD_FOLDER'), filename)
+                df = pd.DataFrame(pd.read_excel(filepath))
+                df.columns = tab_tal
+                con = create_engine(config.get('SQLALCHEMY_DATABASE_URI'))
+                pd.io.sql.to_sql(df, tab_name, con, if_exists='append', index=False)
+            except Exception as e:
+                return 'ERROR %s' % e
+        else:
+            return 'ERROR：Wrong mode request method，Need Post'
+        return self.render_template('superset/development/ImportExeclInfo.html')
 
     @expose("/ExeclInfoAdd", methods=['GET', 'POST'])
     @log_this
     def ExeclInfoAdd(self):
         if request.method == 'POST':
-            headimg = request.files['headimg']
-            filepath = os.path.join(r'D:\other', headimg.filename)
-            print('导入'+headimg.filename)
-            headimg.save(filepath)
-            excelName = headimg.filename
-            importInfo(filepath)
+            try:
+                headimg = request.files['headimg']
+                filename = headimg.filename
+                filepath = os.path.join(config.get('IMG_UPLOAD_FOLDER'), headimg.filename)
+                headimg.save(filepath)
+                print(filepath)
+                df = pd.DataFrame(pd.read_excel(filepath))
+                print(df.dtypes)
+            except Exception as e:
+                return 'ERROR ：The upload file cannot be found'
         else:
-            return render_template('superset/ImportExeclInfo.html')
-
-        return self.render_template('superset/ImportExeclInfo.html')
+            return 'ERROR：Wrong mode request method，Need Post'
+        return self.render_template('superset/development/ExeclInfoConfig.html',dict_keys = df.columns,dict_type=df.dtypes ,filename=filename)
 
     @expose("/Import_ExeclInfo", methods=['GET', 'POST'])
     @log_this
     @has_access
     def Import_ExeclInfo(self):
-        return self.render_template('superset/ImportExeclInfo.html')
+        return self.render_template('superset/development/ImportExeclInfo.html')
 
 appbuilder.add_view_no_menu(Superset)
 

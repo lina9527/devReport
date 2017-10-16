@@ -20,14 +20,11 @@
 {% block body %}
     {% include "superset/flash_wrapper.html" %}
     <div class="layui-tab" lay-filter="demo" lay-allowclose="true">
-        <ul class="layui-tab-title">
-            <li class="layui-this" lay-id="11">Execl导入</li>
-        </ul>
         <div class="layui-tab-content">
             <div class="layui-tab-item layui-show">
                 <div class="container">
                     <form action="/superset/ExeclInfoAdd" method="post" enctype=multipart/form-data >
-                        <table align="center">
+                        <table align="center" >
                             <tr>
                                 <input type="hidden" name="csrf_token" id="csrf_token" value="{{ csrf_token() if csrf_token else '' }}">
                             </tr>

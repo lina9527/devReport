@@ -17,35 +17,34 @@
 {% block body %}
     {% include "superset/flash_wrapper.html" %}
         <div class="layui-tab" lay-filter="demo" lay-allowclose="true">
-        <ul class="layui-tab-title">
-            <li class="layui-this" lay-id="11">表名设置</li>
-        </ul>
         <div class="layui-tab-content">
             <div class="layui-form">
                 <form action="/superset/ColumnInfo" method="post" enctype=multipart/form-data id="columnForm" >
-                    <span class="span_tab">
-                        <label>数据库表名:</label><input name="tab_name" type="text" maxlength="12" value="TableName">
-                    </span>
+                    <div class="div_tab">
+                        <span class="span_tab">
+                            数据库表名：<input name="tab_name"  type="text" maxlength="12" value="TableName">
+                        </span>
+                    </div>
                     <table id="table-3" class="layui-table" lay-even="" lay-skin="nob">
                         <thead>
                             <tr>
-                                <input type="hidden" name="csrf_token" id="csrf_token" value="{{ csrf_token() if csrf_token else '' }}">
-                            </tr>
-                            <tr>
                                 <th>Execl列名</th>
+                                <th>数据类型</th>
                                 <th>数据库列名</th>
                             </tr>
                         </thead>
                         <tbody>
                             {% for d in dict_keys %}
                                 <tr>
-                                    <th>{{ d }}</th>
+                                    <td>{{ d }}</td>
+                                    <td>{{ dict_type[loop.index0] }}</td>
                                     <td name="tab_name">{{ d }}</td>
                                 </tr>
                             {% endfor %}
                         </tbody>
                         <tfoot>
                             <tr>
+                                <input type="hidden" name="csrf_token" id="csrf_token" value="{{ csrf_token() if csrf_token else '' }}">
                                 <input type="hidden" name="tab_tal" id="tab_tal" value="">
                                 <input type="hidden" name="filename" id="filename" value="{{ filename }}">
                             </tr>
@@ -54,6 +53,7 @@
                 </form>
                 <div class="btn_div">
                     <button class="layui-btn layui-btn-normal layui-btn-radius" id="columnInfo">导入数据库</button>
+                    <button class="layui-btn layui-btn-normal layui-btn-radius" onclick="javascript:history.back(-1);">返回上一页</button>
                 </div>
             </div>
         </div>
@@ -68,12 +68,13 @@
             layer.confirm('是否导入数据到数据库？', {
                 btn: ['确定','取消'] //按钮
                 }, function(){
-                $("#columnForm").submit();
+                    $("#columnForm").submit();
                 }
             );
         })
 
-        $('table tbody td').click(function(){
+
+        $('table tbody td[name="tab_name"]').click(function(){
             if(!$(this).is('.input')){
                 $(this).addClass('input').html('<input type="text" value="'+ $(this).text() +'" />').find('input').focus().blur(function(){
                 $(this).parent().removeClass('input').html($(this).val() || '');
