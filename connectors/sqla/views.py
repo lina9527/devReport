@@ -280,4 +280,5 @@ appbuilder.add_link(
     category="Sources",
     category_label=__("Sources")
 )
+
 appbuilder.add_separator("Sources")
