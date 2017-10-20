@@ -272,4 +272,12 @@ appbuilder.add_view(
     category_label=__("Sources"),
     icon='fa-table',)
 
+appbuilder.add_link(
+    "Import ExeclInfo",
+    label=__("Import ExeclInfo"),
+    href="/superset/Import_ExeclInfo",
+    icon="fa-cloud-upload",
+    category="Sources",
+    category_label=__("Sources")
+)
 appbuilder.add_separator("Sources")

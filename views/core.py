@@ -2321,13 +2321,14 @@ class Superset(BaseSupersetView):
                 con = create_engine(config.get('SQLALCHEMY_DATABASE_URI'))
                 pd.io.sql.to_sql(df, tab_name, con, if_exists='append', index=False)
             except Exception as e:
-                return 'ERROR %s' % e
+                return '<h3>ERROR %s</h3>' % e
         else:
-            return 'ERROR：Wrong mode request method，Need Post'
+            return '<h3>ERROR：Wrong mode request method，Need Post</h3>'
         return self.render_template('superset/development/ImportExeclInfo.html')
 
     @expose("/ExeclInfoAdd", methods=['GET', 'POST'])
     @log_this
+    @has_access
     def ExeclInfoAdd(self):
         if request.method == 'POST':
             try:
@@ -2335,13 +2336,11 @@ class Superset(BaseSupersetView):
                 filename = headimg.filename
                 filepath = os.path.join(config.get('IMG_UPLOAD_FOLDER'), headimg.filename)
                 headimg.save(filepath)
-                print(filepath)
                 df = pd.DataFrame(pd.read_excel(filepath))
-                print(df.dtypes)
             except Exception as e:
-                return 'ERROR ：The upload file cannot be found'
+                return '<h3>ERROR ：The upload file cannot be found</h3>'
         else:
-            return 'ERROR：Wrong mode request method，Need Post'
+            return '<h3>ERROR：Wrong mode request method，Need Post</h3>'
         return self.render_template('superset/development/ExeclInfoConfig.html',dict_keys = df.columns,dict_type=df.dtypes ,filename=filename)
 
     @expose("/Import_ExeclInfo", methods=['GET', 'POST'])
@@ -2392,6 +2391,7 @@ appbuilder.add_link(
     category='SQL Lab',
     category_label=__("SQL Lab"),
 )
+
 
 
 @app.after_request

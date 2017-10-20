@@ -712,7 +712,7 @@ msgstr ""
 #: superset/connectors/sqla/views.py:86 superset/connectors/sqla/views.py:140
 #: superset/connectors/sqla/views.py:218 superset/views/core.py:403
 msgid "Table"
-msgstr "数据源表"
+msgstr "数据集名称"
 
 #: superset/connectors/sqla/views.py:91
 msgid "Expression"
@@ -768,19 +768,19 @@ msgstr "受限访问"
 
 #: superset/connectors/sqla/views.py:159
 msgid "List Tables"
-msgstr "数据表列表"
+msgstr "数据集列表"
 
 #: superset/connectors/sqla/views.py:160
 msgid "Show Table"
-msgstr "查看数据表"
+msgstr "查看数据集"
 
 #: superset/connectors/sqla/views.py:161
 msgid "Add Table"
-msgstr "新增数据表"
+msgstr "新增数据集"
 
 #: superset/connectors/sqla/views.py:162
 msgid "Edit Table"
-msgstr "编辑数据表"
+msgstr "编辑数据集"
 
 #: superset/connectors/sqla/views.py:189
 msgid "Name of the table that exists in the source database"
@@ -830,7 +830,7 @@ msgstr "偏移"
 
 #: superset/connectors/sqla/views.py:227
 msgid "Table Name"
-msgstr "数据表名称"
+msgstr "数据集名称"
 
 #: superset/connectors/sqla/views.py:229 superset/views/sql_lab.py:30
 #: superset/views/sql_lab.py:87

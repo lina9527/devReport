@@ -306,13 +306,4 @@ appbuilder.add_link(
     category_icon='fa-database',
     icon="fa-cog")
 
-appbuilder.add_link(
-    "Import ExeclInfo",
-    label=__("Import ExeclInfo"),
-    href="/superset/Import_ExeclInfo",
-    icon="fa-cloud-upload",
-    category="Sources",
-    category_label=__("Sources")
-)
-
 appbuilder.add_separator("Sources", )
