@@ -42,11 +42,13 @@ from superset.legacy import cast_form_data
 from superset.utils import has_access, QueryStatus
 from superset.connectors.connector_registry import ConnectorRegistry
 import superset.models.core as models
+from superset.connectors.sqla import  models as sqlmodels
+from superset.connectors.sqla.models import SqlaTable as exeTable
 from superset.models.sql_lab import Query
 from superset.sql_parse import SupersetQuery
+
 from werkzeug.utils import secure_filename
 from xlrd import open_workbook
-
 from .base import (
     api, SupersetModelView, BaseSupersetView, DeleteMixin,
     SupersetFilter, get_user_roles, json_error_response, get_error_msg
@@ -2319,12 +2321,19 @@ class Superset(BaseSupersetView):
                 df = pd.DataFrame(pd.read_excel(filepath))
                 df.columns = tab_tal
                 con = create_engine(config.get('SQLALCHEMY_DATABASE_URI'))
+                tab_name = 'xlsx_'+tab_name
                 pd.io.sql.to_sql(df, tab_name, con, if_exists='append', index=False)
+                sqltable = sqlmodels.SqlaTable(table_name=tab_name,database_id=1)
+                db.session.add(sqltable)
+                obj = db.session.query(sqlmodels.SqlaTable).filter_by(table_name=tab_name).first()
+                for c in df.columns:
+                    db.session.add(sqlmodels.TableColumn(table_id=obj.id,column_name=c))
+                db.session.commit()
             except Exception as e:
                 return '<h3>ERROR %s</h3>' % e
         else:
             return '<h3>ERROR：Wrong mode request method，Need Post</h3>'
-        return self.render_template('superset/development/ImportExeclInfo.html')
+        return redirect('/tablemodelview/list/')
 
     @expose("/ExeclInfoAdd", methods=['GET', 'POST'])
     @log_this
