@@ -54,17 +54,19 @@ SQLALCHEMY_TRACK_MODIFICATIONS = False
 
 # 你的应用程序密钥
 SECRET_KEY = '\2\1thisismyscretkey\1\2\e\y\y\h'  # noqa
-SQLALCHEMY_DATABASE_URI = 'sqlite:///' + os.path.join(DATA_DIR, 'superset.db')
-EXECL_DATABASE_URI = 'sqlite:///' + os.path.join(DATA_DIR, 'superset.db')
-EXECL_DATABASE_PASSWORD = 'password'
-# SQLALCHEMY_DATABASE_URI = 'oracle://c##_supdata:password@192.168.1.172:1521/orcl'
 # SQLAlchemy 连接字符串.
+SQLALCHEMY_DATABASE_URI = 'sqlite:///' + os.path.join(DATA_DIR, 'superset.db')
+# EXECL 库连接字符串
+EXECL_DATABASE_URI = 'sqlite:///' + os.path.join(DATA_DIR, 'superset.db')
+# EXECL 连接密码 Oracle MySQL需要设置 Sqllite可以为空
+EXECL_DATABASE_PASSWORD = 'password'
+
+# SQLALCHEMY_DATABASE_URI = 'oracle://c##_supdata:password@192.168.1.172:1521/orcl'
 # SQLALCHEMY_DATABASE_URI = 'sqlite:///' + os.path.join(DATA_DIR, 'superset.db')
 # SQLALCHEMY_DATABASE_URI = 'mysql://superset:password@localhost:3306/superset?charset=utf8'
 # SQLALCHEMY_DATABASE_URI = 'mysql://myapp@localhost/myapp'
 # SQLALCHEMY_DATABASE_URI = 'postgresql://root:password@localhost/myapp'
-# EXECL_DATABASE_URI = 'mysql://superset:password@localhost:3306/superset?charset=utf8'
-# EXECL_DATABASE_PASSWORD = 'password'
+
 # 查询与查询搜索限制
 QUERY_SEARCH_LIMIT = 1000
 
