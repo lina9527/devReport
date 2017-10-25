@@ -2323,11 +2323,25 @@ class Superset(BaseSupersetView):
                 con = create_engine(config.get('SQLALCHEMY_DATABASE_URI'))
                 tab_name = 'xlsx_'+tab_name
                 pd.io.sql.to_sql(df, tab_name, con, if_exists='append', index=False)
-                sqltable = sqlmodels.SqlaTable(table_name=tab_name,database_id=1)
+
+                execldb = db.session.query(models.Database).filter_by(database_name='execl').first()
+                dbid = 1
+                if execldb is None:
+                    db.session.add(models.Database(database_name='execl',
+                                                   sqlalchemy_uri=config.get('EXECL_DATABASE_URI'),
+                                                   password=config.get('EXECL_DATABASE_PASSWORD'),
+                                                   expose_in_sqllab=1,allow_run_sync=1))
+                    dbobj = db.session.query(models.Database).filter_by(database_name='execl').first()
+                    dbid = dbobj.id
+                else:
+                    dbid = execldb.id
+                print(dbid)
+
+                sqltable = sqlmodels.SqlaTable(table_name=tab_name,database_id=dbid)
                 db.session.add(sqltable)
-                obj = db.session.query(sqlmodels.SqlaTable).filter_by(table_name=tab_name).first()
+                Tabobj = db.session.query(sqlmodels.SqlaTable).filter_by(table_name=tab_name).first()
                 for c in df.columns:
-                    db.session.add(sqlmodels.TableColumn(table_id=obj.id,column_name=c))
+                    db.session.add(sqlmodels.TableColumn(table_id=Tabobj.id,column_name=c))
                 db.session.commit()
             except Exception as e:
                 return '<h3>ERROR %s</h3>' % e

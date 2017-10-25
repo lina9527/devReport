@@ -12,7 +12,7 @@ export const sections = {
     ],
   },
   datasourceAndVizType: {
-    label: '数据源 & 图表类型',
+    label: '数据集 & 图表类型',
     expanded: true,
     controlSetRows: [
       ['datasource'],
